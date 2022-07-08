@@ -26,7 +26,7 @@ public class MainDriver
 			config.addStaticFiles("/public", Location.CLASSPATH);
 		});
 		
-		app.start(8010);
+		app.start(8040);
 		
 		app.routes(() -> 
 		{
@@ -39,15 +39,18 @@ public class MainDriver
 			{
 				post(uc::loginUser);
 			});
+			
+			path("/getSession", () -> {
+				get(ctx -> {
+					User loggedInUser = ctx.sessionAttribute("loggedInUser");
+					
+					System.out.println(loggedInUser);
+				});
+			});
+			
 		});
 		
-		path("/getSession", () -> {
-			get(ctx -> {
-				User loggedInUser = ctx.sessionAttribute("loggedInUser");
-				
-				System.out.println(loggedInUser);
-			});
-		});
+		
 
 	}
 }

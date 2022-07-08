@@ -1,4 +1,4 @@
-let baseUrl = "http://localhost:8010";
+let baseUrl = "http://localhost:8040";
 
 async function login() {
     console.log("login button pressed");
@@ -28,44 +28,17 @@ async function login() {
     let resJson = await res.json()
 
     .then((resp) => {
-        window.location.assign("customerhomepage.html");
+        console.log(resp);
+
+        if(resp.admin)
+        {
+            window.location.assign("adminhomepage.html");
+        }else {
+            window.location.assign("customerhomepage.html");
+        }
+       
     })
     .catch((error) =>
-    {
-        console.log(error);
-    });
-}
-
-async function adminlogin()
-{
-    console.log("admin login button pressed");
-
-    let aUname = document.getElementById('aUname').value;
-
-    let aPass = document.getElementById('aPass').value;
-
-    let admin = {
-        userUserName : aUname,
-        userPassword : aPass
-    }
-
-    let adminJson = JSON.stringify(admin);
-
-    console.log(adminJson);
-
-    let res = await fetch
-                    (
-                    `${baseUrl}/adminlogin`,
-                    {
-                        method : 'POST',
-                        header : {'Content-Type' : 'application/json'},
-                        body : adminJson
-                    });
-    let resJson = await res.json()
-    .then((resp) => {
-        window.location.assign("adminhomepage.html");
-    })
-    .catch((error) => 
     {
         console.log(error);
     });
