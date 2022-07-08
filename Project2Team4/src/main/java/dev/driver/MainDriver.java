@@ -26,16 +26,11 @@ public class MainDriver
 			config.addStaticFiles("/public", Location.CLASSPATH);
 		});
 		
-		app.start(8040);
+		app.start(8030);
 		
 		app.routes(() -> 
 		{
 			path("/userlogin", () ->
-			{
-				post(uc::loginUser);
-			});
-			
-			path("/adminlogin", () ->
 			{
 				post(uc::loginUser);
 			});
