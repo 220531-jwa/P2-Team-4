@@ -34,6 +34,11 @@ public class MainDriver
 			{
 				post(uc::loginUser);
 			});
+			
+			path("/adminlogin", () ->
+			{
+				post(uc::loginUser);
+			});
 		});
 		
 		path("/getSession", () -> {
