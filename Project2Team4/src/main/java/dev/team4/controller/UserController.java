@@ -23,6 +23,8 @@ public class UserController
 		if(u != null && u.isAdmin() != true)
 		{
 			ctx.sessionAttribute("logged in customer", loggedInUser);
+			ctx.sessionAttribute("id", loggedInUser.getId());
+			
 		} else if (u != null && u.isAdmin() == true)
 		{
 			ctx.sessionAttribute("logged in admin", loggedInUser);
@@ -30,6 +32,4 @@ public class UserController
 		
 		ctx.json(loggedInUser);
 	}
-	
-
 }
