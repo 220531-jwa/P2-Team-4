@@ -16,15 +16,19 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-Feature: Admin Login
 
-	Background:
-				Given a Admin is on the Login Page
- 
-  Scenario Outline: A Admin can login using their credentials
-    When the Admin types in their "<username>" and "<password>" and clicks the Login button
-    Then the Admin should be on the Admin Homepage
+Feature: Admin Creates a Flight
 
-    Examples: 
-      | username  | password  |
-      | tyleruser | tylerpass  |
+  Background:
+    Given a Admin is on the AdminHomePage
+
+  Scenario Outline: An Admin can create a Flight
+    When the Admin types in the "<airline>", "<arriving>", and "<departing>" and clicks the CreateFlightButton
+    Then the Flight should be created
+
+    Examples:
+      | airline | arrival  | departure |
+      | United  | 01:30:00 | 11:00:00  |
+      | Spirit  | 02:00:00 | 12:00:00  |
+      | Delta   | 03:00:00 | 13:00:00  |
+      | JetBlue | 04:00:00 | 14:00:00  |

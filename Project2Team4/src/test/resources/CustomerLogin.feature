@@ -16,15 +16,19 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
+
 Feature: Customer Login
 
 	Background:
 				Given a Customer is on the Login Page
  
   Scenario Outline: A Customer can login using their credentials
-    When the Customer types in their "<username>" and "<password>" and clicks the Customer Login button
+    When the Customer types in their "<username>" and "<pass>" and clicks the Customer Login button
     Then the Customer should be on the Customer Homepage
 
     Examples: 
-      | username  | password |
-      |  jacotste |   jacot  |
+      | username        | pass        |
+      | stephenusername | stephenpass |
+      | tylerusername   | tylerpass   |
+      | andyusername    | andypass    |
+      | khelilusername  | khelilpass  |

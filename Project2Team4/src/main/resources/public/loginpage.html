@@ -1,44 +1,56 @@
 <!DOCTYPE html>
+
+<!--ROOT-->
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Login Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel ="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
-    <style>
-        .Center {
-            width: 200px;
-            height: 200px;
-            position: fixed;
-            top:50%;
-            left: 48%;
-            margin-top: -100px;
-            margin-left:-100px;
-        }
-    </style>
+    <!--HEAD-->
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Customer Login Page</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel ="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
-</head>
-<body>
-    <div class = "Center">
+        <!--STYLE-->
+        <style>
+            .Center {
+                width: 200px;
+                height: 200px;
+                position: fixed;
+                top:50%;
+                left: 48%;
+                margin-top: -100px;
+                margin-left:-100px;
+            }
+        </style>
 
-        <label>
-            Customer Username:
-            <input class="form-control" id = "cUname" type = "text" placeholder="Employee Username">
-        </label>
-        <br/>
-        <label>
-            Customer Password:
-            <input class = "form-control" id="cPass" type = "password">
-        </label>
-        <br/>
+    </head>
+
+    <!--BODY-->
+        <body>
+            <div class = "Center">
+
+                <!--USERNAME-->
+                <label>
+                    Customer Username:
+                    <input class="form-control" id = "cUname" type = "text" placeholder="Customer Username">
+                </label>
+                <br/>
+
+                <!--PASSWORD-->
+                <label>
+                    Customer Password:
+                    <input class = "form-control" id="cPass" type = "password" placeholder="Customer Password">
+                </label>
+                <br/>
+            
+                <button type="button" class="btn btn-primary" onclick="login()">Login</button>
+            </div>
+            
+            <!--JAVASCRIPT-->
+            <script src ="./ATTS.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+            
+    </body>
     
-        <button type="button" class="btn btn-primary" onclick="login()">Login</button>
-    </div>
-<script src ="./ATTS.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    
-</body>
 </html>
