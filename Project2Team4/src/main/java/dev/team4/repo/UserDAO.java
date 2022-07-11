@@ -8,36 +8,25 @@ import java.sql.SQLException;
 import dev.team4.models.User;
 import dev.team4.util.ConnectionUtil;
 
-public class UserDAO 
-{
+public class UserDAO {
+
+	// CONNECTIONUTIL.JAVA CONNECTION
 	private static ConnectionUtil cu = ConnectionUtil.getConnectionUtil();
-	
-	public User GetUserByUserName(String username)
-	{
+
+	// USERNAME
+	public User GetUsername(String username) {
 		String sql = "select * from public.user where username = ?";
-		
-		try(Connection conn = cu.getConnection())
-		{
+		try (Connection conn = cu.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			
 			ps.setString(1, username);
-			
 			ResultSet rs = ps.executeQuery();
-			
-			if(rs.next())
-			{
-				return new User(
-						rs.getInt("id"),
-						rs.getString("username"),
-						rs.getString("pass"),
+			if (rs.next()) {
+				return new User(rs.getInt("id"), rs.getString("username"), rs.getString("pass"),
 						rs.getBoolean("isadmin"));
 			}
-		} catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		return null;
 	}
-
 }

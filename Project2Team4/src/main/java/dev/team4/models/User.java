@@ -1,35 +1,23 @@
 package dev.team4.models;
 
-public class User 
-{
+public class User {
 	int id;
-	String userUserName;
-	String userPassword;
+	String username;
+	String pass;
 	boolean isAdmin;
-	
-	public User()
-	{
-		
-	}
-	
-	public User(int id, String userUserName, String userPassword, boolean isAdmin)
-	{
-		this.userUserName = userUserName;
-		this.userPassword = userPassword;
-		this.isAdmin = isAdmin;
-		this.id = id;
-	}
-	
-	public String getUserUserName()
-	{
-		return userUserName;
-	}
-	
-	public void setUserUserName(String userUserName)
-	{
-		this.userUserName = userUserName;
+
+	public User() {
+
 	}
 
+	public User(int id, String username, String pass, boolean isAdmin) {
+		this.id = id;
+		this.username = username;
+		this.pass = pass;
+		this.isAdmin = isAdmin;
+	}
+
+	// ID
 	public int getId() {
 		return id;
 	}
@@ -38,14 +26,25 @@ public class User
 		this.id = id;
 	}
 
-	public String getUserPassword() {
-		return userPassword;
+	// USERNAME
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
+	// PASS
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
+	// ADMIN
 	public boolean isAdmin() {
 		return isAdmin;
 	}
@@ -54,12 +53,9 @@ public class User
 		this.isAdmin = isAdmin;
 	}
 
-	
+	// OVERDRIVE
 	@Override
-	public String toString() 
-	{
-		return "User [id=" + id + ", userUserName=" + userUserName + ", userPassword=" + userPassword + ", isAdmin="
-				+ isAdmin + "]";
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", pass=" + pass + ", isAdmin=" + isAdmin + "]";
 	}
-	
 }
