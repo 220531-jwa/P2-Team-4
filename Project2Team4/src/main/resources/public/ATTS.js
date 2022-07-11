@@ -1,4 +1,13 @@
-let baseUrl = "http://localhost:8030";
+let baseUrl = "http://localhost:8020";
+
+buyButton.addEventListener('click', () => {
+
+    let buyButton = document.getElementById("buyButton");
+    buy();
+    buyButton.style.visibility = 'hidden';
+    let box = document.getElementById('box');
+    box.style.visibility = 'visible';
+    },false);
 
 async function login() {
     console.log("login button pressed");
@@ -37,6 +46,44 @@ async function login() {
             window.location.assign("customerhomepage.html");
         }
        
+    })
+    .catch((error) =>
+    {
+        console.log(error);
+    });
+}
+
+async function buy()
+{
+    console.log("Buy button pressed");
+
+   
+    
+
+    
+
+
+    let data = {
+        id : 1
+    }
+
+    console.log(data);
+
+    let dataJSON = JSON.stringify(data);
+
+    let res = await fetch (
+        `${baseUrl}/userlogin`,
+        {
+            method : 'PUT',
+            header : {'Content-type': 'application/json'},
+            body : dataJSON
+        }
+    );
+
+    let resJson = await res.json()
+
+    .then((resp) => {
+        console.log(resp);
     })
     .catch((error) =>
     {
