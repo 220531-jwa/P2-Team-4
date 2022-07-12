@@ -1,6 +1,5 @@
 package dev.team4.services;
 
-import dev.team4.models.Flight;
 import dev.team4.models.User;
 import dev.team4.repo.UserDAO;
 
@@ -28,12 +27,5 @@ public class UserService {
             return null;
         }
 
-    }
-
-    public Flight createFlight(Flight flight) {
-        if (flight.getAirline().equals("") || flight.getArriving() == null || flight.getDeparting() == null) {
-            return null;
-        }
-        return ud.createFlight(flight);
     }
 }

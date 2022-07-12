@@ -1,5 +1,6 @@
 package dev.driver;
 
+import dev.team4.controller.FlightController;
 import dev.team4.controller.TicketController;
 import dev.team4.controller.UserController;
 import dev.team4.models.User;
@@ -24,7 +25,8 @@ public class MainDriver {
             config.addStaticFiles("/public", Location.CLASSPATH);
         });
 
-        app.start(8020);
+
+        app.start(8080);
 
         app.routes(() ->
         {
@@ -32,6 +34,10 @@ public class MainDriver {
             {
                 post(uc::loginUser);
                 put(tc::buyTicket);
+            });
+
+            path("/flight", () -> {
+                post(FlightController::createFlight);
             });
 
             path("/getSession", () -> {

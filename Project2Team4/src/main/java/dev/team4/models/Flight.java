@@ -8,6 +8,10 @@ public class Flight {
     private LocalTime arriving;
     private LocalTime departing;
 
+    public Flight() {
+        super();
+    }
+
     public Flight(int id, String airline, LocalTime arriving, LocalTime departing) {
         this.id = id;
         this.airline = airline;

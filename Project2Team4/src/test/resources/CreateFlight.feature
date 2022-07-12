@@ -1,13 +1,13 @@
 Feature: Admin Creates a Flight
 
   Background:
-    Given a Admin is on the AdminHomePage
+    Given a Admin is on the CreateFlightPage
 
   Scenario Outline: An Admin can create a Flight
     When the Admin types in the "<airline>", "<arrival>", and "<departure>" and clicks the CreateFlightButton
-    Then the Flight should be created
+    Then the Admin is back on the HomePage
 
     Examples:
-      | airline | arrival  | departure |
-      | Delta   | 16:30:00 | 08:00:00  |
-      | United  | 12:00:00 | 05:00:00  |
+      | airline | arrival | departure |
+      | Delta   | 12:30PM | 08:00AM   |
+      | United  | 12:00PM | 05:00AM   |
