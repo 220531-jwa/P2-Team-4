@@ -2,7 +2,6 @@ package dev.team4.services;
 
 import java.util.List;
 
-import dev.team4.models.Flight;
 import dev.team4.models.User;
 import dev.team4.repo.UserDAO;
 
@@ -34,17 +33,8 @@ public class UserService {
 	}
 
 	// CREATE USER
-	public User createUser(User u) {
-		User createdUser = ud.createUser(u);
-		return createdUser;
-	}
-
-	// CREATE FLIGHT
-	public Flight createFlight(Flight flight) {
-		if (flight.getAirline().equals("") || flight.getArriving() == null || flight.getDeparting() == null) {
-			return null;
-		}
-		return ud.createFlight(flight);
+	public User createUser(int id, String userUserName, String userPassword, Boolean isAdmin) {
+		return ud.createUser(id, userUserName, userPassword, isAdmin);
 	}
 
 	// GET ALL USERS
@@ -62,21 +52,9 @@ public class UserService {
 		return u;
 	}
 
-	// GET USERNAME
-	public User getUserByUserName(String userUserName) throws Exception {
-		User u = ud.getUserUserName(userUserName);
-		if (u == null) {
-			throw new Exception("User not found");
-		}
-		return u;
-	}
-
 	// UPDATE USER
-	public boolean updateUser(User u) {
-		if (u != null) {
-			return ud.updateUser(u);
-		}
-		return true;
+	public User updateUser(int id, String userUserName, String userPassword, Boolean isAdmin) {
+		return ud.updateUser(id, userUserName, userPassword, isAdmin);
 	}
 
 	// DELETE USER

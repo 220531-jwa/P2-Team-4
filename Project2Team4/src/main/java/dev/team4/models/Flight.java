@@ -1,14 +1,12 @@
 package dev.team4.models;
 
-import java.time.LocalTime;
-
 public class Flight {
 	private int id;
 	private String airline;
-	private LocalTime arriving;
-	private LocalTime departing;
+	private String arriving;
+	private String departing;
 
-	public Flight(int id, String airline, LocalTime arriving, LocalTime departing) {
+	public Flight(int id, String airline, String arriving, String departing) {
 		this.id = id;
 		this.airline = airline;
 		this.arriving = arriving;
@@ -34,20 +32,20 @@ public class Flight {
 	}
 
 	// ARRIVING
-	public LocalTime getArriving() {
+	public String getArriving() {
 		return arriving;
 	}
 
-	public void setArriving(LocalTime arriving) {
+	public void setArriving(String arriving) {
 		this.arriving = arriving;
 	}
 
 	// DEPARTING
-	public LocalTime getDeparting() {
+	public String getDeparting() {
 		return departing;
 	}
 
-	public void setDeparting(LocalTime departing) {
+	public void setDeparting(String departing) {
 		this.departing = departing;
 	}
 

@@ -4,12 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import dev.team4.models.Flight;
 import dev.team4.models.User;
 import dev.team4.util.ConnectionUtil;
 
@@ -19,40 +16,21 @@ public class UserDAO {
 	private static ConnectionUtil cu = ConnectionUtil.getConnectionUtil();
 
 	// CREATE USER
-	public User createUser(User u) {
-		String sql = "insert into public.user (default, ?, ?, ?) returning *";
-		try (Connection conn = cu.getConnection()) {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, u.getId());
-			ps.setString(2, u.getUserUserName());
-			ps.setString(3, u.getUserPassword());
-			ps.setBoolean(4, u.getAdmin());
+	public User createUser(int id, String userUserName, String userPassword, Boolean isAdmin) {
+		String sql = "insert into public.user values (default, ?, ?, ?) returning *;";
+		try (Connection connect = cu.getConnection()) {
+			PreparedStatement ps = connect.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.setString(2, userUserName);
+			ps.setString(3, userPassword);
+			ps.setBoolean(4, isAdmin);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				return new User(rs.getInt("id"), rs.getString("UserUserName"), rs.getString("UserPassword"),
+				return new User(rs.getInt("id"), rs.getString("userUserName"), rs.getString("userPassword"),
 						rs.getBoolean("isAdmin"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		return null;
-	}
-
-	// CREATE FLIGHT
-	public Flight createFlight(Flight flight) {
-		String sql = "insert into flight values(default, ?, ?, ?) returning *";
-		try (Connection conn = cu.getConnection()) {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, flight.getAirline());
-			ps.setTime(2, Time.valueOf(flight.getArriving()));
-			ps.setTime(3, Time.valueOf(flight.getDeparting()));
-			ResultSet rs = ps.executeQuery();
-			if (rs.next()) {
-				return new Flight(rs.getInt(1), rs.getString(2), LocalTime.parse(rs.getTime(3).toString()),
-						LocalTime.parse(rs.getTime(4).toString()));
-			}
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
 		}
 		return null;
 	}
@@ -73,8 +51,8 @@ public class UserDAO {
 				user.add(u);
 			}
 			return user;
-		} catch (SQLException u) {
-			u.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return null;
 	}
@@ -87,25 +65,8 @@ public class UserDAO {
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				return new User(rs.getInt("id"), rs.getString("userUserName"), rs.getString("userPassword"),
-						rs.getBoolean("userPassword"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	// GET USERNAME
-	public User getUserUserName(String userUserName) {
-		String sql = "select * from public.user where username = ?";
-		try (Connection conn = cu.getConnection()) {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, userUserName);
-			ResultSet rs = ps.executeQuery();
-			if (rs.next()) {
 				return new User(rs.getInt("id"), rs.getString("username"), rs.getString("pass"),
-						rs.getBoolean("isadmin"));
+						rs.getBoolean("isAdmin"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -114,26 +75,28 @@ public class UserDAO {
 	}
 
 	// UPDATE USER
-	public boolean updateUser(User u) {
-		String sql = "update public.user set " + "username = ?, " + "pass = ?";
-		try (Connection conn = cu.getConnection()) {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, u.getUserUserName());
-			ps.setString(2, u.getUserPassword());
-			ps.executeUpdate();
-			if (ps.executeUpdate() != 0) {
-				return true;
+	public User updateUser(int id, String userUserName, String userPassword, Boolean isAdmin) {
+		String sql = "update public.user set username = ? and pass = ? and isAdmin = ? where id = ? returning *;";
+		try (Connection connect = cu.getConnection()) {
+			PreparedStatement ps = connect.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.setString(2, userUserName);
+			ps.setString(3, userPassword);
+			ps.setBoolean(4, isAdmin);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				return new User(rs.getInt("id"), rs.getString("username"), rs.getString("pass"),
+						rs.getBoolean("isAdmin"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
 
 	// DELETE USER
-
 	public void deleteUser(int id) {
-		String sql = "delete from user where id = ?";
+		String sql = "delete from public.user where id = ?";
 		try (Connection conn = cu.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
@@ -141,5 +104,10 @@ public class UserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public User getUserUserName(String userUserName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

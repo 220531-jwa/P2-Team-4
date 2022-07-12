@@ -2,7 +2,6 @@ package dev.team4.controller;
 
 import java.util.List;
 
-import dev.team4.models.Flight;
 import dev.team4.models.User;
 import dev.team4.services.UserService;
 import io.javalin.http.Context;
@@ -30,23 +29,22 @@ public class UserController {
 
 	// CREATE USER
 	public void createUser(Context ctx) {
-		ctx.status(201);
-		User userFromRequestBody = ctx.bodyAsClass(User.class);
-		User u = us.createUser(userFromRequestBody);
-		ctx.json(u);
-	}
-
-	// CREATE FLIGHT
-	public void createFlight(Context ctx) {
-		Flight flight = ctx.bodyAsClass(Flight.class);
-		Flight result = us.createFlight(flight);
-		if (result != null) {
-			// SUCCESS
-			ctx.status(201);
-			ctx.json(result);
-		} else {
-			// FAILURE
-			ctx.status(422);
+		User u = ctx.bodyAsClass(User.class);
+		int id = u.getId();
+		String userUserName = u.getUserUserName();
+		String userPassword = u.getUserPassword();
+		Boolean isAdmin = u.getAdmin();
+		User check = null;
+		try {
+			check = us.createUser(id, userUserName, userPassword, isAdmin);
+			if (check != null) {
+				ctx.status(200);
+				ctx.json(check);
+			} else {
+				ctx.status(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -70,32 +68,19 @@ public class UserController {
 		ctx.json(u);
 	}
 
-	// GET USERNAME
-	public void getUserByUserName(Context ctx) {
-		String userUserName = (ctx.pathParam("userUserName"));
-		User u = null;
-		try {
-			u = us.getUserByUserName(userUserName);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		ctx.status(200);
-		ctx.json(u);
-	}
-
 	// UPDATE USER
 	public void updateUser(Context ctx) {
+		int id = Integer.parseInt(ctx.pathParam("id"));
 		User u = ctx.bodyAsClass(User.class);
-		boolean success = us.updateUser(u);
-		try {
-			if (!success) {
-				ctx.status(404);
-			} else {
-				ctx.status(200);
-				ctx.json(u);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		String userUserName = u.getUserUserName();
+		String userPassword = u.getUserPassword();
+		Boolean isAdmin = u.getAdmin();
+		User updated = us.updateUser(id, userUserName, userPassword, isAdmin);
+		if (updated != null) {
+			ctx.status(200);
+			ctx.json(updated);
+		} else {
+			ctx.status(404);
 		}
 	}
 
