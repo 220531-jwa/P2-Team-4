@@ -1,6 +1,5 @@
 package dev.team4.controller;
 
-import dev.team4.models.Flight;
 import dev.team4.models.User;
 import dev.team4.services.UserService;
 import io.javalin.http.Context;
@@ -25,19 +24,5 @@ public class UserController {
         }
 
         ctx.json(loggedInUser);
-    }
-
-
-    public void createFlight(Context ctx) {
-        Flight flight = ctx.bodyAsClass(Flight.class);
-
-        Flight result = us.createFlight(flight);
-
-        if (result != null) {
-            ctx.status(201);
-            ctx.json(result);
-        } else {
-            ctx.status(422);
-        }
     }
 }
