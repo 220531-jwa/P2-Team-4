@@ -25,9 +25,9 @@ public class MainDriver
 	{
 		
 		UserController uc = new UserController(new UserService(new UserDAO()));
-// =====
+
    TicketController rc = new TicketController(new TicketService(new TicketDAO()));
-// ====
+
 		
 		Javalin app = Javalin.create(config -> {
 			config.enableCorsForAllOrigins();
@@ -41,12 +41,12 @@ public class MainDriver
 			path("/userlogin", () ->
 			{
 				post(uc::loginUser);
-// ====
+
             	 path("/tickets", () -> { // http://localhost:8080/users
 			            get(rc::selectAllTicket);
 				 });
 				 
-	// ========
+
 			});
 
 			

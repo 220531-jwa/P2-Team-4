@@ -16,8 +16,6 @@ public class TicketController {
 		this.ts = ts;
 	}
 	
-
-	//==============
 	// select all Ticket
 	public void selectAllTicket(Context ctx) {
 		ctx.status(200);
