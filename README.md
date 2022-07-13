@@ -9,7 +9,7 @@ An airport wishes to provide a better system put in place that’ll encourage mo
 ##  :star: MVPS :star:
 * A user(Customer/Administrator) can login with their credentials
 * A user(Customer) can view all of their plane tickets
-* A user(Customer) can view plane associated with their flights’ arrival or departure
+* A user(Customer) can view their airline, arrival and departure
 * A user(Customer) can view past purchases
 * A user(Customer) can cancel their flight
 * An administrator can create new flights as well as their prices
