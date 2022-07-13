@@ -33,8 +33,8 @@ public class UserService {
 	}
 
 	// CREATE USER
-	public User createUser(int id, String userUserName, String userPassword, Boolean isAdmin) {
-		return ud.createUser(id, userUserName, userPassword, isAdmin);
+	public User createUser(String userUserName, String userPassword, Boolean isAdmin) {
+		return ud.createUser(userUserName, userPassword, isAdmin);
 	}
 
 	// GET ALL USERS
@@ -52,9 +52,9 @@ public class UserService {
 		return u;
 	}
 
-	// UPDATE USER
-	public User updateUser(int id, String userUserName, String userPassword, Boolean isAdmin) {
-		return ud.updateUser(id, userUserName, userPassword, isAdmin);
+	// UPDATE PASSWORD
+	public User updatePassword(int id, String userPassword) {
+		return ud.updatePassword(id, userPassword);
 	}
 
 	// DELETE USER

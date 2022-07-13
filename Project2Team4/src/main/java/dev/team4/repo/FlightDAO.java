@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,24 +17,40 @@ public class FlightDAO {
 	private static ConnectionUtil cu = ConnectionUtil.getConnectionUtil();
 
 	// CREATE FLIGHT
-	public Flight createFlight(int id, String airline, String arriving, String departing) {
-		String sql = "insert into public.flight values (default, ?, ?, ?) returning *;";
-		try (Connection connect = cu.getConnection()) {
-			PreparedStatement ps = connect.prepareStatement(sql);
-			ps.setInt(1, id);
-			ps.setString(2, airline);
-			ps.setString(3, arriving);
-			ps.setString(4, departing);
+	public Flight createFlight(Flight flight) {
+		String sql = "insert into public.flight values(default, ?, ?, ?) returning *";
+		try (Connection conn = cu.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, flight.getAirline());
+			ps.setTime(2, Time.valueOf(flight.getArriving()));
+			ps.setTime(3, Time.valueOf(flight.getDeparting()));
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				return new Flight(rs.getInt("id"), rs.getString("airline"), rs.getString("arriving"),
-						rs.getString("isAdmin"));
+				return new Flight(rs.getInt("id"), rs.getString("airline"), rs.getTime("arriving"),
+						rs.getTime("departing"));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		return null;
 	}
+//	public Flight createFlight(String airline, String arriving, String departing) {
+//		String sql = "insert into public.flight values (default, ?, ?, ?) returning *;";
+//		try (Connection connect = cu.getConnection()) {
+//			PreparedStatement ps = connect.prepareStatement(sql);
+//			ps.setString(1, airline);
+//			ps.setTime(2, arriving);
+//			ps.setTime(3, departing);
+//			ResultSet rs = ps.executeQuery();
+//			if (rs.next()) {
+//				return new Flight(rs.getInt("id"), rs.getString("airline"), rs.getTime("arriving"),
+//						rs.getTime("departing"));
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return null;
+//	}
 
 	// GET ALL FLIGHTS
 	public List<Flight> getAllFlights() {
@@ -45,8 +62,8 @@ public class FlightDAO {
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				String airline = rs.getString("airline");
-				String arriving = rs.getString("arriving");
-				String departing = rs.getString("departing");
+				Time arriving = rs.getTime("arriving");
+				Time departing = rs.getTime("departing");
 				Flight f = new Flight(id, airline, arriving, departing);
 				flight.add(f);
 			}
@@ -65,8 +82,8 @@ public class FlightDAO {
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				return new Flight(rs.getInt("id"), rs.getString("airline"), rs.getString("arriving"),
-						rs.getString("departing"));
+				return new Flight(rs.getInt("id"), rs.getString("airline"), rs.getTime("arriving"),
+						rs.getTime("departing"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -74,19 +91,17 @@ public class FlightDAO {
 		return null;
 	}
 
-	// UPDATE FLIGHT
-	public Flight updateFlight(int id, String airline, String arriving, String departing) {
-		String sql = "update public.flight set airline = ? and arriving = ? and departing where id = ? returning *;";
+	// UPDATE AIRLINE
+	public Flight updateAirline(int id, String airline) {
+		String sql = "update public.flight set airline = ? where id = ? returning *;";
 		try (Connection connect = cu.getConnection()) {
 			PreparedStatement ps = connect.prepareStatement(sql);
 			ps.setInt(1, id);
 			ps.setString(2, airline);
-			ps.setString(3, arriving);
-			ps.setString(4, departing);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				return new Flight(rs.getInt("id"), rs.getString("airline"), rs.getString("arriving"),
-						rs.getString("departing"));
+				return new Flight(rs.getInt("id"), rs.getString("airline"), rs.getTime("arriving"),
+						rs.getTime("departing"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

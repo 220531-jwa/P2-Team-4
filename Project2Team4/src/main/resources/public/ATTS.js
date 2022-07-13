@@ -1,13 +1,20 @@
-// URL
-let baseUrl = "http://localhost:8030";
+// LOCAL HOST
+let baseUrl = "http://localhost:8040";
+
+// ADD EVENT LISTENER
+buyButton.addEventListener('click', () => {
+
+    let buyButton = document.getElementById("buyButton");
+    buy();
+    buyButton.style.visibility = 'hidden';
+    let box = document.getElementById('box');
+    box.style.visibility = 'visible';
+    },false);
 
 // LOGIN
 async function login() {
-    // LOGIN BUTTON
     console.log("login button pressed");
-    // CUSTOMER USERNAME
     let cUname = document.getElementById('cUname').value;
-    // CUSTOMER PASSWORD
     let cPass = document.getElementById('cPass').value;
 
     let cUser = {
@@ -19,32 +26,96 @@ async function login() {
 
     console.log(customerJson);
 
-    // FETCH METHOD
     let res = await fetch (
-                    `${baseUrl}/userlogin`,
-                    {
-                        method : 'POST',
-                        header : {'Content-type': 'application/json'},
-                        body : customerJson
-                    }
+        `${baseUrl}/userlogin`,
+        {
+            method : 'POST',
+            header : {'Content-type': 'application/json'},
+            body : customerJson
+        }
     );
 
     let resJson = await res.json()
 
     .then((resp) => {
         console.log(resp);
-        if(resp.admin)
-        {
-            // ADMIN HOME PAGE
+        if(resp.admin) {
             window.location.assign("adminhomepage.html");
-        }else {
-            // CUSTOMER HOME PAGE
+        } else {
             window.location.assign("customerhomepage.html");
-        }
+        }   
     })
-    // ERROR
+
     .catch((error) =>
     {
         console.log(error);
     });
+}
+
+
+// BUY TICKET
+async function buy() {
+    console.log("Buy button pressed");
+
+    let data = {
+        id : 1
+    }
+
+    console.log(data);
+
+    let dataJSON = JSON.stringify(data);
+
+    let res = await fetch (
+        `${baseUrl}/userlogin`,
+        {
+            method : 'PUT',
+            header : {'Content-type': 'application/json'},
+            body : dataJSON
+        }
+    );
+
+    let resJson = await res.json()
+
+    .then((resp) => {
+        console.log(resp);
+    })
+    .catch((error) =>
+    {
+        console.log(error);
+    });
+}
+
+
+// UPDATE FLIGHT DESCRIPTION
+async function updateFlightDescription() {
+    console.log("Updated flight description");
+    let fId = document.getElementById('flightId').value;
+    let fDesc = document.getElementById('flightDescription').value;
+
+    let flightData = {
+        flightId : fId,
+        flightDescription : fDesc
+    }
+
+    console.log(flightData);
+
+    let flightJSON = JSON.stringify(flightData);
+
+    let res = await fetch (
+        `${baseUrl}/userlogin/adminupdatedescription`,
+        {
+            method : 'PUT',
+            header : {'Content-type' : 'application/json'},
+            body : flightJSON
+        }
+    );
+
+    let resJson = await res.json()
+    .then((resp) => {
+        console.log(resp);
+        window.location.assign("adminhomepage.html");
+    })
+    .catch((error) =>{
+        console.log(error);
+    });   
 }

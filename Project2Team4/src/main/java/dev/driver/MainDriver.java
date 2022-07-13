@@ -7,12 +7,15 @@ import static io.javalin.apibuilder.ApiBuilder.path;
 import static io.javalin.apibuilder.ApiBuilder.post;
 
 import dev.team4.controller.FlightController;
+import dev.team4.controller.FlightLocationController;
 import dev.team4.controller.TicketController;
 import dev.team4.controller.UserController;
 import dev.team4.models.User;
 import dev.team4.repo.FlightDAO;
+import dev.team4.repo.FlightLocationDAO;
 import dev.team4.repo.TicketDAO;
 import dev.team4.repo.UserDAO;
+import dev.team4.services.FlightLocationService;
 import dev.team4.services.FlightService;
 import dev.team4.services.TicketService;
 import dev.team4.services.UserService;
@@ -28,6 +31,7 @@ public class MainDriver {
 		// VARIABLES
 		UserController uc = new UserController(new UserService(new UserDAO()));
 		FlightController fc = new FlightController(new FlightService(new FlightDAO()));
+		FlightLocationController flc = new FlightLocationController(new FlightLocationService(new FlightLocationDAO()));
 		TicketController tc = new TicketController(new TicketService(new TicketDAO()));
 
 		// JAVALIN
@@ -44,7 +48,6 @@ public class MainDriver {
 
 			// CUSTOMER LOGIN
 			path("/userlogin", () -> {
-				// LOGIN
 				post(uc::loginUser);
 			});
 
@@ -64,8 +67,8 @@ public class MainDriver {
 				path("/{id}", () -> {
 					// GET USER ID
 					get(uc::getUserById);
-					// UPDATE USER
-					patch(uc::updateUser);
+					// UPDATE PASSWORD
+					patch(uc::updatePassword);
 					// DELETE USER
 					delete(uc::deleteUser);
 				});
@@ -82,16 +85,34 @@ public class MainDriver {
 				path("/{id}", () -> {
 					// GET FLIGHT ID
 					get(fc::getFlightById);
-					// UPDATE FLIGHT
-					patch(fc::updateFlight);
+					// UPDATE AIRLINE
+					patch(fc::updateAirline);
 					// DELETE FLIGHT
 					delete(fc::deleteFlight);
 				});
 			});
 
+			// FLIGHT LOCATION
+			// http://localhost:8030/flight_location
+			path("/flight_location", () -> {
+				// CREATE FLIGHT LOCATION
+				post(flc::createFlightLocation);
+				// GET ALL FLIGHT LOCATIONS
+				get(flc::getAllFlightLocations);
+				// http://localhost:8030/flight_location/3
+				path("/{id}", () -> {
+					// GET FLIGHT LOCATION ID
+					get(flc::getFlightLocationById);
+					// UPDATE DESCRIPTION
+					patch(flc::updateDescription);
+					// DELETE FLIGHT LOCATIONS
+					delete(flc::deleteFlightLocation);
+				});
+			});
+
 			// TICKET
 			// http://localhost:8030/ticket
-			path("/flight", () -> {
+			path("/ticket", () -> {
 				// CREATE TICKET
 				post(tc::createTicket);
 				// GET ALL TICKETS
@@ -100,8 +121,8 @@ public class MainDriver {
 				path("/{id}", () -> {
 					// GET TICKET ID
 					get(tc::getTicketById);
-					// UPDATE TICKET
-					patch(tc::updateTicket);
+					// UPDATE TICKET PRICE
+					patch(tc::updateTicketPrice);
 					// DELETE TICKET
 					delete(tc::deleteTicket);
 				});

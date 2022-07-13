@@ -16,17 +16,16 @@ public class UserDAO {
 	private static ConnectionUtil cu = ConnectionUtil.getConnectionUtil();
 
 	// CREATE USER
-	public User createUser(int id, String userUserName, String userPassword, Boolean isAdmin) {
+	public User createUser(String userUserName, String userPassword, Boolean isAdmin) {
 		String sql = "insert into public.user values (default, ?, ?, ?) returning *;";
 		try (Connection connect = cu.getConnection()) {
 			PreparedStatement ps = connect.prepareStatement(sql);
-			ps.setInt(1, id);
-			ps.setString(2, userUserName);
-			ps.setString(3, userPassword);
-			ps.setBoolean(4, isAdmin);
+			ps.setString(1, userUserName);
+			ps.setString(2, userPassword);
+			ps.setBoolean(3, isAdmin);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				return new User(rs.getInt("id"), rs.getString("userUserName"), rs.getString("userPassword"),
+				return new User(rs.getInt("id"), rs.getString("username"), rs.getString("pass"),
 						rs.getBoolean("isAdmin"));
 			}
 		} catch (SQLException e) {
@@ -74,15 +73,13 @@ public class UserDAO {
 		return null;
 	}
 
-	// UPDATE USER
-	public User updateUser(int id, String userUserName, String userPassword, Boolean isAdmin) {
-		String sql = "update public.user set username = ? and pass = ? and isAdmin = ? where id = ? returning *;";
+	// UPDATE PASSWORD
+	public User updatePassword(int id, String userPassword) {
+		String sql = "update public.user set pass = ? where id = ? returning *;";
 		try (Connection connect = cu.getConnection()) {
 			PreparedStatement ps = connect.prepareStatement(sql);
-			ps.setInt(1, id);
-			ps.setString(2, userUserName);
-			ps.setString(3, userPassword);
-			ps.setBoolean(4, isAdmin);
+			ps.setString(1, userPassword);
+			ps.setInt(2, id);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				return new User(rs.getInt("id"), rs.getString("username"), rs.getString("pass"),

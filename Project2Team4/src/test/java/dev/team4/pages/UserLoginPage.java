@@ -1,10 +1,13 @@
+// PACKAGE
 package dev.team4.pages;
 
+// IMPORTS
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+// CLASS
 public class UserLoginPage {
 
 	// SELENIUM WEB DRIVER

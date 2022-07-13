@@ -1,4 +1,4 @@
-// PACKAGES
+// PACKAGE
 package dev.team4.runners;
 
 // IMPORTS
@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import dev.team4.pages.UserLoginPage;
+import dev.team4.pages.UpdateFlightLocationDescriptionPage;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.junit.Cucumber;
@@ -18,13 +18,13 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(features = "src/test/resources", glue = "dev.team4.steps")
 
 // CLASS
-public class UserLoginRunner {
+public class UpdateFlightLocationDescriptionRunner {
 
-	// SELNIUM WEB DRIVER
+	// SELENIUM WEB DRIVER
 	public static WebDriver driver;
 
-	// LOGIN PAGE
-	public static UserLoginPage userLoginPage;
+	// CONNECTION TO UpdateFlightLocationDescriptionPage.java
+	public static UpdateFlightLocationDescriptionPage updateFlightLocationDescriptionPage;
 
 	// START CHROME DRIVER CONNECTION
 	@BeforeAll
@@ -32,8 +32,7 @@ public class UserLoginRunner {
 		File chrome = new File("src/test/resources/chromedriver.exe");
 		System.setProperty("webdriver.chrome.driver", chrome.getAbsolutePath());
 		driver = new ChromeDriver();
-
-		userLoginPage = new UserLoginPage(driver);
+		updateFlightLocationDescriptionPage = new UpdateFlightLocationDescriptionPage(driver);
 	}
 
 	// END CHROME DRIVER CONNECTION

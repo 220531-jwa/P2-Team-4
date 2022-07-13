@@ -15,8 +15,8 @@ public class TicketService {
 	}
 
 	// CREATE TICKET
-	public Ticket createTicket(int id, int customer_id, int flight_id, int origin_id, int destination_id, int price) {
-		return td.createTicket(id, customer_id, flight_id, origin_id, destination_id, price);
+	public Ticket createTicket(int customer_id, int flight_id, int origin_id, int destination_id, int price) {
+		return td.createTicket(customer_id, flight_id, origin_id, destination_id, price);
 	}
 
 	// GET ALL TICKETS
@@ -34,13 +34,18 @@ public class TicketService {
 		return t;
 	}
 
-	// UPDATE TICKET
-	public Ticket updateTicket(int id, int price) {
-		return td.updateTicket(id, price);
+	// UPDATE TICKET PRICE
+	public Ticket updateTicketPrice(int id, int price) {
+		return td.updateTicketPrice(id, price);
 	}
 
 	// DELETE TICKET
 	public void deleteTicket(int id) {
 		td.deleteTicket(id);
+	}
+
+	// BUY TICKET
+	public boolean buyTicket(Ticket t) {
+		return td.buyTicket(t);
 	}
 }

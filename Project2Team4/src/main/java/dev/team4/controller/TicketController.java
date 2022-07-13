@@ -18,7 +18,6 @@ public class TicketController {
 	// CREATE TICKET
 	public void createTicket(Context ctx) {
 		Ticket t = ctx.bodyAsClass(Ticket.class);
-		int id = t.getId();
 		int customer_id = t.getCustomer_id();
 		int flight_id = t.getFlight_id();
 		int origin_id = t.getOrigin_id();
@@ -26,7 +25,7 @@ public class TicketController {
 		int price = t.getPrice();
 		Ticket check = null;
 		try {
-			check = ts.createTicket(id, customer_id, flight_id, origin_id, destination_id, price);
+			check = ts.createTicket(customer_id, flight_id, origin_id, destination_id, price);
 			if (check != null) {
 				ctx.status(200);
 				ctx.json(check);
@@ -58,12 +57,12 @@ public class TicketController {
 		ctx.json(u);
 	}
 
-	// UPDATE TICKET
-	public void updateTicket(Context ctx) {
+	// UPDATE TICKET PRICE
+	public void updateTicketPrice(Context ctx) {
 		int id = Integer.parseInt(ctx.pathParam("id"));
 		Ticket t = ctx.bodyAsClass(Ticket.class);
 		int price = t.getPrice();
-		Ticket updated = ts.updateTicket(id, price);
+		Ticket updated = ts.updateTicketPrice(id, price);
 		if (updated != null) {
 			ctx.status(200);
 			ctx.json(updated);

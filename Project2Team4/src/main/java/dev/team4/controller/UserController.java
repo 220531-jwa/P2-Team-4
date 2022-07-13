@@ -30,13 +30,12 @@ public class UserController {
 	// CREATE USER
 	public void createUser(Context ctx) {
 		User u = ctx.bodyAsClass(User.class);
-		int id = u.getId();
 		String userUserName = u.getUserUserName();
 		String userPassword = u.getUserPassword();
 		Boolean isAdmin = u.getAdmin();
 		User check = null;
 		try {
-			check = us.createUser(id, userUserName, userPassword, isAdmin);
+			check = us.createUser(userUserName, userPassword, isAdmin);
 			if (check != null) {
 				ctx.status(200);
 				ctx.json(check);
@@ -68,14 +67,12 @@ public class UserController {
 		ctx.json(u);
 	}
 
-	// UPDATE USER
-	public void updateUser(Context ctx) {
+	// UPDATE PASSWORD
+	public void updatePassword(Context ctx) {
 		int id = Integer.parseInt(ctx.pathParam("id"));
 		User u = ctx.bodyAsClass(User.class);
-		String userUserName = u.getUserUserName();
 		String userPassword = u.getUserPassword();
-		Boolean isAdmin = u.getAdmin();
-		User updated = us.updateUser(id, userUserName, userPassword, isAdmin);
+		User updated = us.updatePassword(id, userPassword);
 		if (updated != null) {
 			ctx.status(200);
 			ctx.json(updated);

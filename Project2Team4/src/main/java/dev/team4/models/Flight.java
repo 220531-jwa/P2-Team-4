@@ -1,12 +1,14 @@
 package dev.team4.models;
 
+import java.sql.Time;
+
 public class Flight {
 	private int id;
 	private String airline;
-	private String arriving;
-	private String departing;
+	private Time arriving;
+	private Time departing;
 
-	public Flight(int id, String airline, String arriving, String departing) {
+	public Flight(int id, String airline, Time arriving, Time departing) {
 		this.id = id;
 		this.airline = airline;
 		this.arriving = arriving;
@@ -32,20 +34,20 @@ public class Flight {
 	}
 
 	// ARRIVING
-	public String getArriving() {
+	public Time getArriving() {
 		return arriving;
 	}
 
-	public void setArriving(String arriving) {
+	public void setArriving(Time arriving) {
 		this.arriving = arriving;
 	}
 
 	// DEPARTING
-	public String getDeparting() {
+	public Time getDeparting() {
 		return departing;
 	}
 
-	public void setDeparting(String departing) {
+	public void setDeparting(Time departing) {
 		this.departing = departing;
 	}
 

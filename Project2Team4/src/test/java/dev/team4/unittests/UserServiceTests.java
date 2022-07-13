@@ -1,5 +1,7 @@
+// PACKAGE
 package dev.team4.unittests;
 
+// IMPORTS
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.mockito.Mockito.when;
@@ -15,15 +17,21 @@ import dev.team4.models.User;
 import dev.team4.repo.UserDAO;
 import dev.team4.services.UserService;
 
+// MOCKITO EXTENSION
 @ExtendWith(MockitoExtension.class)
+
+// CLASS
 public class UserServiceTests {
 
-	// MOCK
+	// MOCK WITH UserService.java
 	@InjectMocks
 	private static UserService mockUs;
+
+	// MOCK WITH UserDAO.java
 	@Mock
 	private static UserDAO mockUd;
 
+	// BEFORE EACH MOCK
 	@BeforeEach
 	public void setupEach() {
 		mockUs = new UserService(mockUd);
@@ -35,7 +43,7 @@ public class UserServiceTests {
 		// Given
 		User mock = new User(1, "demonLord", "pokemon", false);
 		// When
-		when(mockUd.GetUserByUserName("demonLord")).thenReturn(mock);
+		when(mockUd.getUserUserName("demonLord")).thenReturn(mock);
 		// Then
 		assertEquals(mock, mockUs.login("demonLord", "pokemon"));
 	}
@@ -46,7 +54,7 @@ public class UserServiceTests {
 		// Given
 		User mock = new User(1, "king", "felleman", true);
 		// When
-		when(mockUd.GetUserByUserName("king")).thenReturn(mock);
+		when(mockUd.getUserUserName("king")).thenReturn(mock);
 		// Then
 		assertEquals(mock, mockUs.login("king", "felleman"));
 	}
@@ -57,7 +65,7 @@ public class UserServiceTests {
 		// Given
 		User mock = new User(3, "kanto", "services", false);
 		// When
-		when(mockUd.GetUserByUserName("micky")).thenReturn(mock);
+		when(mockUd.getUserUserName("micky")).thenReturn(mock);
 		// Then
 		assertNotEquals(mock, mockUs.login("micky", "mouse"));
 	}
@@ -68,7 +76,7 @@ public class UserServiceTests {
 		// Given
 		User mock = new User(2, "calin", "fine", true);
 		// When
-		when(mockUd.GetUserByUserName("octus")).thenReturn(mock);
+		when(mockUd.getUserUserName("octus")).thenReturn(mock);
 		// Then
 		assertNotEquals(mock, mockUs.login("octus", "yes"));
 	}

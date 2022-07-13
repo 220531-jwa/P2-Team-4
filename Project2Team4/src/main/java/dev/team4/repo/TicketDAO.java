@@ -16,16 +16,15 @@ public class TicketDAO {
 	private static ConnectionUtil cu = ConnectionUtil.getConnectionUtil();
 
 	// CREATE TICKET
-	public Ticket createTicket(int id, int customer_id, int flight_id, int origin_id, int destination_id, int price) {
+	public Ticket createTicket(int customer_id, int flight_id, int origin_id, int destination_id, int price) {
 		String sql = "insert into public.ticket values (default, ?, ?, ?, ?, ?) returning *;";
 		try (Connection connect = cu.getConnection()) {
 			PreparedStatement ps = connect.prepareStatement(sql);
-			ps.setInt(1, id);
-			ps.setInt(2, customer_id);
-			ps.setInt(3, flight_id);
-			ps.setInt(4, origin_id);
-			ps.setInt(5, destination_id);
-			ps.setInt(6, price);
+			ps.setInt(1, customer_id);
+			ps.setInt(2, flight_id);
+			ps.setInt(3, origin_id);
+			ps.setInt(4, destination_id);
+			ps.setInt(5, price);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				return new Ticket(rs.getInt("id"), rs.getInt("customer_id"), rs.getInt("flight_id"),
@@ -78,8 +77,8 @@ public class TicketDAO {
 		return null;
 	}
 
-	// UPDATE TICKET
-	public Ticket updateTicket(int id, int price) {
+	// UPDATE TICKET PRICE
+	public Ticket updateTicketPrice(int id, int price) {
 		String sql = "update public.ticket set price = ? where id = ? returning *;";
 		try (Connection connect = cu.getConnection()) {
 			PreparedStatement ps = connect.prepareStatement(sql);
@@ -106,5 +105,27 @@ public class TicketDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	// BUY TICKET
+	public boolean buyTicket(Ticket t) {
+		String sql = "update ticket" + " set customer_id = ?" + " where id = ?";
+
+		try (Connection conn = cu.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setInt(1, t.getCustomer_id());
+			ps.setInt(2, t.getId());
+
+			ps.executeUpdate();
+
+			if (ps.executeUpdate() != 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return false;
 	}
 }

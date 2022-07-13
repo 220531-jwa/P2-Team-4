@@ -15,9 +15,15 @@ public class FlightService {
 	}
 
 	// CREATE FLIGHT
-	public Flight createFlight(int id, String airline, String arriving, String departing) {
-		return fd.createFlight(id, airline, arriving, departing);
+	public Flight createFlight(Flight flight) {
+		if (flight.getAirline().equals("") || flight.getArriving() == null || flight.getDeparting() == null) {
+			return null;
+		}
+		return fd.createFlight(flight);
 	}
+//	public Flight createFlight(String airline, String arriving, String departing) {
+//		return fd.createFlight(airline, arriving, departing);
+//	}
 
 	// GET ALL FLIGHTS
 	public List<Flight> getAllFlights() {
@@ -33,9 +39,9 @@ public class FlightService {
 		return f;
 	}
 
-	// UPDATE FLIGHT
-	public Flight updateFlight(int id, String airline, String arriving, String departing) {
-		return fd.updateFlight(id, airline, arriving, departing);
+	// UPDATE AIRLINE
+	public Flight updateAirline(int id, String airline) {
+		return fd.updateAirline(id, airline);
 	}
 
 	// DELETE FLIGHT

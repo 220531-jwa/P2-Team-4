@@ -16,25 +16,34 @@ public class FlightController {
 	}
 
 	// CREATE FLIGHT
-	public void createFlight(Context ctx) {
-		Flight f = ctx.bodyAsClass(Flight.class);
-		int id = f.getId();
-		String airline = f.getAirline();
-		String arriving = f.getArriving();
-		String departing = f.getDeparting();
-		Flight check = null;
-		try {
-			check = fs.createFlight(id, airline, arriving, departing);
-			if (check != null) {
-				ctx.status(200);
-				ctx.json(check);
-			} else {
-				ctx.status(404);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+	public static void createFlight(Context ctx) {
+		Flight flight = ctx.bodyAsClass(Flight.class);
+		Flight result = fs.createFlight(flight);
+		if (result != null) {
+			ctx.status(201);
+			ctx.json(result);
+		} else {
+			ctx.status(422);
 		}
 	}
+//	public void createFlight(Context ctx) {
+//		Flight f = ctx.bodyAsClass(Flight.class);
+//		String airline = f.getAirline();
+//		Time arriving = f.getArriving();
+//		Time departing = f.getDeparting();
+//		Flight check = null;
+//		try {
+//			check = fs.createFlight(airline, arriving, departing);
+//			if (check != null) {
+//				ctx.status(200);
+//				ctx.json(check);
+//			} else {
+//				ctx.status(404);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	// GET ALL FLIGHTS
 	public void getAllFlights(Context ctx) {
@@ -56,14 +65,12 @@ public class FlightController {
 		ctx.json(f);
 	}
 
-	// UPDATE FLIGHTS
-	public void updateFlight(Context ctx) {
+	// UPDATE AIRLINE
+	public void updateAirline(Context ctx) {
 		int id = Integer.parseInt(ctx.pathParam("id"));
 		Flight f = ctx.bodyAsClass(Flight.class);
 		String airline = f.getAirline();
-		String arriving = f.getArriving();
-		String departing = f.getDeparting();
-		Flight updated = fs.updateFlight(id, airline, arriving, departing);
+		Flight updated = fs.updateAirline(id, airline);
 		if (updated != null) {
 			ctx.status(200);
 			ctx.json(updated);
