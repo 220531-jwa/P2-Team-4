@@ -34,7 +34,7 @@ public class MainDriver
 			config.addStaticFiles("/public", Location.CLASSPATH);
 		});
 		
-		app.start(8080);
+		app.start(8072);
 		
 		app.routes(() -> 
 		{

@@ -20,7 +20,7 @@ public class UserFeatureStepImpl
 	@Given("a Customer is on the Login Page")
 	public void a_customer_is_on_the_login_page() {
 	    // Write code here that turns the phrase above into concrete actions
-		driver.get("http://localhost:8030/loginpage.html");
+		driver.get("http://localhost:8060/loginpage.html");
 	}
 
 	@When("the Customer types in their {string} and {string} and clicks the Customer Login button")

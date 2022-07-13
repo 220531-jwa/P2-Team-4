@@ -18,10 +18,9 @@ import dev.team4.services.TicketService;
 public class TicketServicesTests {
 
 	
-	
 	@InjectMocks
 	TicketService ticketServiceMocks;
-     // private static TicketService ticketServiceMoks;
+    //  private static TicketService ticketServiceMoks;
 	
 	@Mock
 	TicketDAO ticketDaoMock;
@@ -30,16 +29,15 @@ public class TicketServicesTests {
 	@Test
 	public void SendRequestWithValidInput() {
 // Given
-		Ticket mockTicket = new Ticket(1, 1, 1, 1, 1, 1000);
+		Ticket mockTicket = new Ticket(1, 1, 1, 1, 4, 1000);
 		
 // When
-		when(ticketDaoMock.selectAllTicket(1, 1, 1, 1, 1, 1000))
+		when(ticketDaoMock.selectAllTicket(1, 1, 1, 1, 4, 1000))
 			.thenReturn(mockTicket);
 // Then
-		Ticket ticketShowUp = ticketServiceMocks.selectAllTicket(1, 1, 1, 1, 1, 1000);
+		Ticket ticketShowUp = ticketServiceMocks.selectAllTicket(1, 1, 1, 1, 4, 1000);
 
 		assertEquals(mockTicket, ticketShowUp);
-
 
 	}	
 	

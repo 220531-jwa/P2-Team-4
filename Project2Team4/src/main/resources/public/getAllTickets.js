@@ -1,4 +1,4 @@
-let baseUrl = "http://localhost:8080";
+let baseUrl = "http://localhost:8060";
 
 //async function selectAllTickets() {
 
@@ -14,11 +14,6 @@ let baseUrl = "http://localhost:8080";
     async function getTickets(){
             
      
-        //  let newCol = document.createElement('th');
-        //     newCol.innerText = ""
-        //     topRow.appendChild(newCol);
-       
-    
         let searchId = JSON.stringify(window.sessionStorage.getItem('id'));
     
         let res = await fetch(
@@ -47,7 +42,7 @@ let baseUrl = "http://localhost:8080";
                 newRow.appendChild(col3);
 
                 let col4 = document.createElement('td');
-                col4.innerText = resp[i].distination_id;
+                col4.innerText = resp[i].destination_id;
                 newRow.appendChild(col4);
 
                 let col5 = document.createElement('td');
@@ -58,25 +53,8 @@ let baseUrl = "http://localhost:8080";
                 col6.innerText = resp[i].price;
                 newRow.appendChild(col6);
 
-
-
-
-                // console.log(typeOfEmployee)
-                // if(typeOfEmployee != "EMPLOYEE" && !resp[i].denied && !resp[i].approved){
-                //     let col4 = document.createElement('td');
-                //     let approveButton = document.createElement('button');
-                //     let denyButton = document.createElement('button');
-                //     approveButton.style.color = "white"
-                //     approveButton.innerText = "Approve"
-                //     denyButton.style.color = "white"
-                //     denyButton.innerText = "Deny"
-                //     approveButton.addEventListener('click', approve, false);
-                //     denyButton.addEventListener('click', deny, false);
-                //     col4.appendChild(approveButton);
-                //     col4.appendChild(denyButton);
-                //     newRow.appendChild(col4);
-               // }
-                // document.getElementById('requests').appendChild(newRow);
+              
+                 document.getElementById('requests').appendChild(newRow);
             }
             console.log(resp);
         })
