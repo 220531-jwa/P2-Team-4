@@ -56,6 +56,7 @@ const reimbursement = document.getElementById("reimbursement");
 const topRow = document.getElementById("table-top-row");
 const typeOfEmployee = window.sessionStorage.getItem('type');
 
+let locations = ["Cairo","London","Sydney","Kyoto"];
 async function getTickets(){
         
  
@@ -88,14 +89,12 @@ async function getTickets(){
 
             let col4 = document.createElement('td');
            // col4.innerText = resp[i].destination_id;
-           col4.innertext = getLocation(parseInt(resp[i].destination_id, 10))
-
+           col4.textContent = locations[parseInt(resp[i].destination_id, 10) - 1]
             newRow.appendChild(col4);
 
             let col5 = document.createElement('td');
           //  col5.innerText = resp[i].origin_id;
-          col5.innertext = getLocation(parseInt(resp[i].origin_id, 10))
-
+          col5.textContent = locations[parseInt(resp[i].origin_id, 10) - 1]
             newRow.appendChild(col5);
 
             let col6 = document.createElement('td');
@@ -110,16 +109,17 @@ async function getTickets(){
 }
 
 // ========== Done
-
-let locations = ["Cairo","London","Sydney","Kyoto"]
-
- function getLocation(id){
-
-
-return locations[id - 1]
-
- }
-
 // col4.innertext = getLocation(resp[I].destination_id)
 // getLocation(parseInt(resp[I].destination_id, 10))
+
+// let col4 = document.createElement('td');
+//            // col4.innerText = resp[i].destination_id;
+           
+//            col4.textContent = locations[parseInt(resp[i].destination_id, 10) - 1]
+//             newRow.appendChild(col4);
+
+//             let col5 = document.createElement('td');
+//             col5.textContent = locations[parseInt(resp[i].origin_id, 10) - 1]
+
+//             newRow.appendChild(col5);
 
