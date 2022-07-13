@@ -1,4 +1,4 @@
-let baseUrl = "http://localhost:8020";
+let baseUrl = "http://localhost:8040";
 
 buyButton.addEventListener('click', () => {
 
@@ -57,12 +57,6 @@ async function buy()
 {
     console.log("Buy button pressed");
 
-   
-    
-
-    
-
-
     let data = {
         id : 1
     }
@@ -89,4 +83,40 @@ async function buy()
     {
         console.log(error);
     });
+}
+
+async function updateFlightDescription()
+{
+    console.log("Updated flight description");
+
+    let fId = document.getElementById('flightId').value;
+    let fDesc = document.getElementById('flightDescription').value;
+
+    let flightData = {
+        flightId : fId,
+        flightDescription : fDesc
+    }
+
+    console.log(flightData);
+
+    let flightJSON = JSON.stringify(flightData);
+
+    let res = await fetch (
+        `${baseUrl}/userlogin/adminupdatedescription`,
+        {
+            method : 'PUT',
+            header : {'Content-type' : 'application/json'},
+            body : flightJSON
+        }
+    );
+
+    let resJson = await res.json()
+    .then((resp) => {
+        console.log(resp);
+        window.location.assign("adminhomepage.html");
+    })
+    .catch((error) =>{
+        console.log(error);
+    });
+    
 }

@@ -7,6 +7,10 @@ public class FlightLocation
 	String flightDescription;
 	String flightCountry;
 	String flightCity;
+	public FlightLocation()
+	{
+		
+	}
 	public FlightLocation(int flightId, String flightDescription, String flightCountry, String flightCity) 
 	{
 		this.flightId = flightId;
