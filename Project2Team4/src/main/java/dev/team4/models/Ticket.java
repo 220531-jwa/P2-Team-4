@@ -1,17 +1,22 @@
 package dev.team4.models;
 
-public class Ticket {
-	
+
+public class Ticket 
+{ 
+
 	int id;
 	int flight_id;
 	int customer_id;
 	int destination_id;
 	int origin_id;
 	int price;
-	public Ticket () {
+
+	public Ticket() {
 		
 	}
-	public Ticket(int id, int flight_id, int customer_id, int destination_id, int origin_id, int price) {
+	public Ticket(int id, int flight_id, int customer_id, int destination_id, int origin_id, int price) 
+	{
+
 		super();
 		this.id = id;
 		this.flight_id = flight_id;
@@ -58,10 +63,10 @@ public class Ticket {
 	}
 	@Override
 	public String toString() {
-		return "ticket [id=" + id + ", flight_id=" + flight_id + ", customer_id=" + customer_id + ", destination_id="
+
+		return "Ticket [id=" + id + ", flight_id=" + flight_id + ", customer_id=" + customer_id + ", destination_id="
 				+ destination_id + ", origin_id=" + origin_id + ", price=" + price + "]";
 	}
-	
-	
+
 
 }

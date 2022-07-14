@@ -1,4 +1,15 @@
-let baseUrl = "http://localhost:8072";
+
+let baseUrl = "http://localhost:8040";
+
+buyButton.addEventListener('click', () => {
+
+    let buyButton = document.getElementById("buyButton");
+    buy();
+    buyButton.style.visibility = 'hidden';
+    let box = document.getElementById('box');
+    box.style.visibility = 'visible';
+    },false);
+
 
 async function login() {
     console.log("login button pressed");
@@ -44,10 +55,6 @@ async function login() {
     });
 }
 
-
-
-
-// ========== khellil code
 
 document.getElementById("createRequest").addEventListener("click", () => {}, false);
 
@@ -108,18 +115,72 @@ async function getTickets(){
     })
 }
 
-// ========== Done
-// col4.innertext = getLocation(resp[I].destination_id)
-// getLocation(parseInt(resp[I].destination_id, 10))
 
-// let col4 = document.createElement('td');
-//            // col4.innerText = resp[i].destination_id;
-           
-//            col4.textContent = locations[parseInt(resp[i].destination_id, 10) - 1]
-//             newRow.appendChild(col4);
+async function buy()
+{
+    console.log("Buy button pressed");
 
-//             let col5 = document.createElement('td');
-//             col5.textContent = locations[parseInt(resp[i].origin_id, 10) - 1]
+    let data = {
+        id : 1
+    }
 
-//             newRow.appendChild(col5);
+    console.log(data);
+
+    let dataJSON = JSON.stringify(data);
+
+    let res = await fetch (
+        `${baseUrl}/userlogin`,
+        {
+            method : 'PUT',
+            header : {'Content-type': 'application/json'},
+            body : dataJSON
+        }
+    );
+
+    let resJson = await res.json()
+
+    .then((resp) => {
+        console.log(resp);
+    })
+    .catch((error) =>
+    {
+        console.log(error);
+    });
+}
+
+async function updateFlightDescription()
+{
+    console.log("Updated flight description");
+
+    let fId = document.getElementById('flightId').value;
+    let fDesc = document.getElementById('flightDescription').value;
+
+    let flightData = {
+        flightId : fId,
+        flightDescription : fDesc
+    }
+
+    console.log(flightData);
+
+    let flightJSON = JSON.stringify(flightData);
+
+    let res = await fetch (
+        `${baseUrl}/userlogin/adminupdatedescription`,
+        {
+            method : 'PUT',
+            header : {'Content-type' : 'application/json'},
+            body : flightJSON
+        }
+    );
+
+    let resJson = await res.json()
+    .then((resp) => {
+        console.log(resp);
+        window.location.assign("adminhomepage.html");
+    })
+    .catch((error) =>{
+        console.log(error);
+    });
+    
+}
 

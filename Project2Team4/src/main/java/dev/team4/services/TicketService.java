@@ -1,26 +1,30 @@
 package dev.team4.services;
 
+
 import java.util.List;
 
 import dev.team4.models.Ticket;
 import dev.team4.repo.TicketDAO;
 
-
-
-public class TicketService {
-
+public class TicketService 
+{
 	
-	private static TicketDAO ticketDao;
-	
-	public TicketService(TicketDAO ticketDao) {
-		this.ticketDao = ticketDao;
+	private static TicketDAO td;
+
+	public TicketService(TicketDAO td)
+	{
+		this.td = td;
 	}
 	
-
+	public boolean buyTicket(Ticket t)
+	{
+		return td.buyTicket(t);
+	}
 // select all Ticket
 		public List<Ticket> selectAllTicket() {
 			
 		return ticketDao.selectAllTicket();
 		}
+
 	
 }

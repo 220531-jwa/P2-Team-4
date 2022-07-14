@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Flight</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <br/>
+        <label>
+            Airline
+            <input class="form-controller" type="text" id="airline">
+        </label>
+        <br/>
+        <label>
+            Departing
+            <input class="form-controller" type="time" id="departing">
+        </label>
+        <br/>
+        <label>
+            Arriving
+            <input class="form-controller" type="time" id="arriving">
+        </label>
+    </div>
+    <div>
+        <button class="btn btn-primary" id="submitButton" onclick="submit()" href="homePage.html">Submit</button>
+    </div>
+    <script src="newFlight.js"></script>
+</body>
+</html>
