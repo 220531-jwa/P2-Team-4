@@ -1,5 +1,8 @@
 package dev.team4.services;
 
+
+import java.util.List;
+
 import dev.team4.models.Ticket;
 import dev.team4.repo.TicketDAO;
 
@@ -17,6 +20,11 @@ public class TicketService
 	{
 		return td.buyTicket(t);
 	}
+// select all Ticket
+		public List<Ticket> selectAllTicket() {
+			
+		return ticketDao.selectAllTicket();
+		}
 
 	
 }

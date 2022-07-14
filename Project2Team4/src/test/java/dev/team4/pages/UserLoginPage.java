@@ -24,5 +24,6 @@ public class UserLoginPage
 	
 	@FindBy(xpath = "/html/body/div/button")
 	public WebElement loginButton;
+	
 
 }

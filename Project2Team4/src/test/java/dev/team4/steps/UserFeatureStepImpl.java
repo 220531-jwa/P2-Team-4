@@ -35,7 +35,7 @@ public class UserFeatureStepImpl {
     public void the_customer_should_be_on_the_customer_homepage() {
         // Write code here that turns the phrase above into concrete actions
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.titleContains("Customer Landing Page"));
-
         assertEquals("Customer Landing Page", driver.getTitle());
     }
+
 }
