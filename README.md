@@ -8,6 +8,7 @@ An airport wishes to provide an improved system to encourage more people to fly 
 
 ##  :star: MVPS :star:
 * A user (Customer) can login with their username and password.
+* A user (customer) can buy tickets.
 * A user (Customer) can view all of their tickets.
 * A user (Customer) can view their airline, arrival and departure.
 * A user (Customer) can view the city, country and the location's description.
