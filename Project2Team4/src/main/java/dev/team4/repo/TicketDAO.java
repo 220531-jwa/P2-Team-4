@@ -38,5 +38,29 @@ public class TicketDAO
 		
 		return false;
 	}
+	
+	public boolean deleteTicket(int id) 
+	{
+		String sql = "delete from public.ticket where id = ? returning *";
+		try (Connection conn = cu.getConnection()) 
+		{
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next())
+			{
+				return true;
+			}
+			
+			
+		} catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 
 }

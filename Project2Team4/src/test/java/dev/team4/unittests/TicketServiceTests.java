@@ -50,5 +50,27 @@ public class TicketServiceTests
 		
 		assertEquals(false, tsMocks.buyTicket(mock));
 	}
+	
+	@Test
+	public void ticketSuccessfullyDeleted()
+	{
+		//Given
+		Ticket mock = new Ticket(1, 2, 1, 3, 1, 2000);
+		//When
+		when(mockTd.deleteTicket(mock.getId())).thenReturn(true);
+		//Then
+		assertEquals(true, tsMocks.deleteTicket(mock.getId()));
+	}
+	
+	@Test
+	public void ticketUnsuccessfullyDeleted()
+	{
+		//Given
+		Ticket mock = new Ticket(0, 2, 1, 3, 1, 2000);
+		//When
+		when(mockTd.deleteTicket(mock.getId())).thenReturn(false);
+		//Then
+		assertEquals(false, tsMocks.deleteTicket(mock.getId()));
+	}
 
 }
