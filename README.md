@@ -9,13 +9,13 @@ An airport wishes to provide an improved system to encourage more people to fly 
 ##  :star: MVPS :star:
 * A user (Customer) can login with their username and password.
 * A user (customer) can buy tickets.
-* A user (Customer) can view all of their tickets ( airline, arrival, departure, city, country and the location's description).
+* A user (Customer) can view all of their tickets (Ticket ID, Customer ID, Flight ID, Origin ID, Destination ID, Price).
 * A user (Customer) can view past purchases.
 * A user (Customer) can cancel their flight.
 ____________________________________________________________________
 * A user (Administrator) can login with their username and password.
 * A user (Administrator) can create new flights and their prices.
-* A user (Administrator) can view all of the tickets ( airline, arrival, departure, city, country and the location's description).
+* A user (Administrator) can view all the tickets (Ticket ID, Customer ID, Flight ID, Origin ID, Destination ID, Price)
 * A user (Administrator) can update any location's description.
 * A user (Administrator) can cancel any flight.
 * A user (Administrator) can set a discount on a flight.
