@@ -1,15 +1,5 @@
 
-let baseUrl = "http://localhost:8030";
-
-buyButton.addEventListener('click', () => {
-
-    let buyButton = document.getElementById("buyButton");
-    buy();
-    buyButton.style.visibility = 'hidden';
-    let box = document.getElementById('box');
-    box.style.visibility = 'visible';
-    },false);
-
+let baseUrl = "http://localhost:8040";
 
 async function login() {
     console.log("login button pressed");
@@ -63,10 +53,11 @@ const reimbursement = document.getElementById("reimbursement");
 const topRow = document.getElementById("table-top-row");
 const typeOfEmployee = window.sessionStorage.getItem('type');
 
-let locations = ["Cairo","London","Sydney","Kyoto"];
+
 async function getTickets(){
         
- 
+    let locations = ["Cairo","London","Sydney","Kyoto"];
+
     let searchId = JSON.stringify(window.sessionStorage.getItem('id'));
 
     let res = await fetch(
@@ -95,6 +86,8 @@ async function getTickets(){
             newRow.appendChild(col3);
 
             let col4 = document.createElement('td');
+
+            console.log(locations[parseInt(resp[i].destination_id)]);
            // col4.innerText = resp[i].destination_id;
            col4.textContent = locations[parseInt(resp[i].destination_id, 10) - 1]
             newRow.appendChild(col4);
@@ -108,7 +101,22 @@ async function getTickets(){
             col6.innerText = resp[i].price;
             newRow.appendChild(col6);
 
-          
+            let col7 = document.createElement('td');
+            let buyButton = document.createElement('button');
+            buyButton.innerText = "Buy";
+            buyButton.classList.add('btn');
+            buyButton.classList.add('btn-primary');
+            buyButton.addEventListener('click', (event) => 
+            {
+                buy(event.target.parentElement.parentElement.childNodes[0].innerText, event);
+                buyButton.style.visibility = 'hidden';
+            },false);
+            
+            col7.appendChild(buyButton);
+
+            newRow.appendChild(col7);
+            
+
              document.getElementById('requests').appendChild(newRow);
         }
         console.log(resp);
@@ -116,12 +124,12 @@ async function getTickets(){
 }
 
 
-async function buy()
+async function buy(ticketId, event)
 {
     console.log("Buy button pressed");
 
     let data = {
-        id : 1
+        id : ticketId
     }
 
     console.log(data);
@@ -141,6 +149,8 @@ async function buy()
 
     .then((resp) => {
         console.log(resp);
+        event.target.parentElement.parentElement.childNodes[2].innerText = resp.customer_id;
+
     })
     .catch((error) =>
     {
@@ -210,7 +220,7 @@ async function cancelTicket()
     let resJson = await res.json()
     .then((resp) => {
         console.log(resp);
-        window.location.assign("customerhomepage.html");
+        window.location.assign("homePage.html");
     })
     .catch((error) =>{
         console.log(error);

@@ -53,7 +53,6 @@ let baseUrl = "http://localhost:8060";
                 col6.innerText = resp[i].price;
                 newRow.appendChild(col6);
 
-              
                  document.getElementById('requests').appendChild(newRow);
             }
             console.log(resp);

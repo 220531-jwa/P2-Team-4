@@ -26,9 +26,9 @@ public class TicketService
 		return td.deleteTicket(id);
 	}
   
-// select all Ticket
-		public List<Ticket> selectAllTicket() {
-			
-		return ticketDao.selectAllTicket();
-		}
+	public List<Ticket> selectAllTicket() 
+	{
+		
+	return td.selectAllTicket();
+	}
 }

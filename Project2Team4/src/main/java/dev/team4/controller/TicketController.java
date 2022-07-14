@@ -19,11 +19,11 @@ public class TicketController
 
 	// select all Ticket
 	public void selectAllTicket(Context ctx)
-  {
+	{
 		ctx.status(200);
 	    List<Ticket> tickets = ts.selectAllTicket();
 		ctx.json(tickets);
-  }
+	}
 	public void buyTicket(Context ctx)
 	{
 		Ticket t = ctx.bodyAsClass(Ticket.class);
