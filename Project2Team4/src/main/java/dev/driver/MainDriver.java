@@ -1,10 +1,29 @@
 package dev.driver;
 
+
+
 import dev.team4.controller.FlightLocationController;
+
 import dev.team4.controller.TicketController;
 import dev.team4.controller.UserController;
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
+
+import dev.team4.repo.TicketDAO;
+import dev.team4.repo.UserDAO;
+import dev.team4.models.User;
+import dev.team4.services.TicketService;
+import dev.team4.services.UserService;
+import static io.javalin.apibuilder.ApiBuilder.delete;
+import static io.javalin.apibuilder.ApiBuilder.get;
+import static io.javalin.apibuilder.ApiBuilder.patch;
+import static io.javalin.apibuilder.ApiBuilder.path;
+import static io.javalin.apibuilder.ApiBuilder.post;
+import static io.javalin.apibuilder.ApiBuilder.put;
+
+
+
+
 import dev.team4.repo.FlightLocationDAO;
 import dev.team4.repo.TicketDAO;
 import dev.team4.repo.UserDAO;
@@ -31,6 +50,7 @@ public class MainDriver {
         FlightLocationController flc = new FlightLocationController(new FlightLocationService(new FlightLocationDAO()));
         
         Javalin app = Javalin.create(config -> {
+
 			config.enableCorsForAllOrigins();
 			//config.enableCorsForOrigin("http://team4-s3-static-hosting.s3-website-us-east-1.amazonaws.com");
 			config.addStaticFiles("/public", Location.CLASSPATH);
@@ -45,6 +65,10 @@ public class MainDriver {
             {
                 post(uc::loginUser);
                 put(tc::buyTicket);
+              	 path("/tickets", () -> 
+                 { // http://localhost:8080/users
+			            get(rc::selectAllTicket);
+				         });
                 
                 path("/adminupdatedescription", () -> 
 				{
@@ -78,4 +102,5 @@ public class MainDriver {
 
 
     }
+
 }
