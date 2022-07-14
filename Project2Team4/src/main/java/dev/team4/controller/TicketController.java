@@ -50,6 +50,37 @@ public class TicketController
 		}
 		
 	}
-
-
+  
+  public void deleteTicket(Context ctx) 
+	{
+		Ticket t = ctx.bodyAsClass(Ticket.class);
+		
+		int id = t.getId();
+		
+		System.out.println(id);
+		
+		//int customerid = t.getCustomer_id();
+		
+		boolean success = ts.deleteTicket(id);
+		
+		Ticket tickets = null;
+		
+		try {
+			
+			if(success)
+			{
+				System.out.println("sending 200 status" + id);
+				ctx.status(200);
+				ctx.json(t);
+			} else 
+			{
+				System.out.println("sending 404 error" + id);
+				ctx.status(404);
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 }

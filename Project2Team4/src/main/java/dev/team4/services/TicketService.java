@@ -20,11 +20,15 @@ public class TicketService
 	{
 		return td.buyTicket(t);
 	}
+	
+	public boolean deleteTicket(int id) 
+	{
+		return td.deleteTicket(id);
+	}
+  
 // select all Ticket
 		public List<Ticket> selectAllTicket() {
 			
 		return ticketDao.selectAllTicket();
 		}
-
-	
 }

@@ -57,8 +57,7 @@ public class MainDriver {
 		});
 
 
-
-        app.start(8040);
+        app.start(8030);
 
         app.routes(() ->
         {
@@ -75,6 +74,11 @@ public class MainDriver {
 				{
 					put(flc::updateFlightDescription);
 				});
+                
+                path("/cancelticket", () -> 
+                {
+                	delete(tc::deleteTicket);
+                });
             });
 
             path("/flight", () -> {
@@ -90,6 +94,11 @@ public class MainDriver {
             });
 
         });
+        
+//        app.delete("userlogin/cancelticket", (ctx) ->
+//        {
+//        	
+//        });
 
 
     }

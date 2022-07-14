@@ -1,5 +1,5 @@
 
-let baseUrl = "http://localhost:8040";
+let baseUrl = "http://localhost:8030";
 
 buyButton.addEventListener('click', () => {
 
@@ -184,3 +184,36 @@ async function updateFlightDescription()
     
 }
 
+async function cancelTicket()
+{
+    console.log("Ticket cancelled");
+
+    let tId = document.getElementById('ticketId').value;
+
+    let ticket = {
+        id : tId
+    }
+
+    console.log(ticket);
+
+    let ticketJSON = JSON.stringify(ticket);
+
+    let res = await fetch (
+            `${baseUrl}/userlogin/cancelticket`,
+            {
+                method : 'DELETE',
+                header : {'Content-type' : 'application/json'},
+                body : ticketJSON
+            }
+    );
+    
+    let resJson = await res.json()
+    .then((resp) => {
+        console.log(resp);
+        window.location.assign("customerhomepage.html");
+    })
+    .catch((error) =>{
+        console.log(error);
+    });
+
+}
