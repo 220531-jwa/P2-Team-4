@@ -9,6 +9,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="styles.css" rel="stylesheet">
+
+    <style>
+        th
+        {
+            background-color: aliceblue;
+
+
+        }
+
+
+    </style>
+
 </head>
 <!--  <body onload="getRequests()">-->
     <body onload="getTickets()">   
@@ -22,29 +34,23 @@
         </div>
     </div>
     <div class="row">
-        <table class="table table-dark" style="background-color: black;" id="requests">
+        <table class="table table-dark" style="background-color: darkblue;" id="requests">
             <thead>
             <tr id="table-top-row">
                 <th scope="col">id</th>
                 <th scope="col">flight_id</th>
                 <th scope="col">customer_id</th>
                 <th scope="col">destination_id</th>
-
-         
-
-
-
-
                 <th scope="col">origin_id</th>
                 <th scope="col">price</th>
+                <th scope ="col">buy</th>
             </tr>
             </thead>
         </table>
     </div>
 </div>
-<div>
-    <button class="btn btn-primary" id="createRequest">Buy Ticket</button>
-</div>
+
+<a href = "customercancelflight.html" ><button id = "cancelFlight" style = "color: white; background-color: darkblue;">Cancel Flight</button></a>
 <!--<script src="getAllTickets.js"></script>-->
 <script src="./ATTS.js"></script>   
 

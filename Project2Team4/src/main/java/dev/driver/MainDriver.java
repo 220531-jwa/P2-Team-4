@@ -57,18 +57,18 @@ public class MainDriver {
 		});
 
 
-        app.start(8030);
+        app.start(8040);
 
         app.routes(() ->
         {
             path("/userlogin", () ->
             {
-                post(uc::loginUser);
-                put(tc::buyTicket);
+                 post(uc::loginUser);
+                 put(tc::buyTicket);
               	 path("/tickets", () -> 
                  { // http://localhost:8080/users
-			            get(rc::selectAllTicket);
-				         });
+			            get(tc::selectAllTicket);
+				 });
                 
                 path("/adminupdatedescription", () -> 
 				{

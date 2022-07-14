@@ -32,12 +32,9 @@ public class TicketServicesTests {
 		Ticket mockTicket = new Ticket(1, 1, 1, 1, 4, 1000);
 		
 // When
-		when(ticketDaoMock.selectAllTicket(1, 1, 1, 1, 4, 1000))
-			.thenReturn(mockTicket);
-// Then
-		Ticket ticketShowUp = ticketServiceMocks.selectAllTicket(1, 1, 1, 1, 4, 1000);
+		when(ticketDaoMock.selectAllTicket().contains(mockTicket)).thenReturn(true);
 
-		assertEquals(mockTicket, ticketShowUp);
+		assertEquals(true, ticketServiceMocks.selectAllTicket());
 
 	}	
 	
