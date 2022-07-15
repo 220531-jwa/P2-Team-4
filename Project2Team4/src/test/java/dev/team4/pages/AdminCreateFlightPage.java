@@ -8,13 +8,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 //CLASS
-public class CreateFlightPage {
+public class AdminCreateFlightPage {
 
 	// SELENIUM WEB DRIVER
 	private WebDriver driver;
 
 	// CREATE FLIGHT PAGE
-	public CreateFlightPage(WebDriver driver) {
+	public AdminCreateFlightPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
@@ -32,6 +32,6 @@ public class CreateFlightPage {
 	public WebElement departingTimeInput;
 
 	// SUBMIT BUTTON
-	@FindBy(id = "submitButton")
-	public WebElement submit;
+	@FindBy(id = "createButton")
+	public WebElement createButton;
 }

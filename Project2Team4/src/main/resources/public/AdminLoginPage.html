@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<!--ROOT-->
+<html lang="en">
+
+<!--HEAD-->
+
+<head>
+    <!--STYLE-->
+    <style>
+        .AdminLoginForm {
+            width: 200px;
+            height: 200px;
+            position: fixed;
+            top: 50%;
+            left: 48%;
+            margin-top: -100px;
+            margin-left: -100px;
+        }
+    </style>
+</head>
+
+<!--BODY-->
+
+<body>
+    <div class="AdminLoginForm">
+        <!-- Title -->
+        <h1>WELCOME</h1>
+        <!--ADMIN USERNAME-->
+        <label>
+            <input class="form-control" id="au" type="text" placeholder="Admin Username">
+        </label>
+        <br><br>
+        <!--ADMIN PASSWORD-->
+        <label>
+            <input class="form-control" id="ap" type="password" placeholder="Admin Password">
+        </label>
+        <br><br>
+        <!--ADMIN LOGIN-->
+        <button type="button" class="btn btn-primary" onclick="adminlogin()">Login</button>
+        <br><br>
+        <!-- Switch Accounts -->
+        <form method="POST" action="CustomerLoginPage.html">
+            <button type="submit" id="switch" class="switch">Switch to Customer</button>
+        </form>
+    </div>
+    <!--JAVASCRIPT-->
+    <script src="./ATTS.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -17,13 +17,22 @@
 ## (Comments)
 #Sample Feature Definition Template
 
-Feature: Ticket Buying
+Feature:
 
-Background: 
+	Admin Get All Tickets
 
-	Given a Customer is on the home page
+Background:
 
-Scenario: A Customer can buy a ticket
-	
-	When a user clicks on the buy button the user should be able to buy a ticket
-	Then a users' id is associated with the ticket
+	Given The Admin is on the Admin Login Page to login so they can go to the Admin Home Page to see all the tickets
+
+Scenario Outline:
+
+	An Admin can see all the tickets
+
+	When The Admin types in their "<username>" and "<pass>" and clicks the Admin Login button
+	Then The Admin should be on the Admin Home Page with all the tickets
+ 
+Examples:
+
+	| username        | pass        |
+	| stephenusername | stephenpass |

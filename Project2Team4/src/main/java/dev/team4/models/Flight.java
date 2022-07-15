@@ -5,14 +5,14 @@ import java.sql.Time;
 public class Flight {
 	private int id;
 	private String airline;
-	private Time arriving;
-	private Time departing;
+	private Time arrival;
+	private Time departure;
 
-	public Flight(int id, String airline, Time arriving, Time departing) {
+	public Flight(int id, String airline, Time arrival, Time departure) {
 		this.id = id;
 		this.airline = airline;
-		this.arriving = arriving;
-		this.departing = departing;
+		this.arrival = arrival;
+		this.departure = departure;
 	}
 
 	// ID
@@ -34,26 +34,26 @@ public class Flight {
 	}
 
 	// ARRIVING
-	public Time getArriving() {
-		return arriving;
+	public Time getArrival() {
+		return arrival;
 	}
 
-	public void setArriving(Time arriving) {
-		this.arriving = arriving;
+	public void setArrival(Time arrival) {
+		this.arrival = arrival;
 	}
 
 	// DEPARTING
-	public Time getDeparting() {
-		return departing;
+	public Time getDeparture() {
+		return departure;
 	}
 
-	public void setDeparting(Time departing) {
-		this.departing = departing;
+	public void setDeparture(Time departure) {
+		this.departure = departure;
 	}
 
 	// OVERDRIVE
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", airline=" + airline + ", arriving=" + arriving + ", departing=" + departing + "]";
+		return "User [id=" + id + ", airline=" + airline + ", arrival=" + arrival + ", departure=" + departure + "]";
 	}
 }

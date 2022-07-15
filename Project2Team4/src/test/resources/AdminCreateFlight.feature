@@ -19,22 +19,23 @@
 
 Feature:
 
-	Customer Login
+	Admin Creates a Flight
 
 Background:
 
-	Given A Customer is on the Customer Login Page
+	Given The Admin is on the Create Flight Page
+
+Scenario Outline:
+
+	An Admin can create a Flight
+	
+	When The Admin types in the "<airline>", "<arrival>", and "<departure>" and clicks the Create Flight Button
+  Then The Admin is back on the Admin Home Page
+
+ Examples:
  
- Scenario Outline:
- 
- 	A Customer can login using their credentials
- 	
- 	When A Customer types in their "<username>" and "<pass>" and clicks the Customer Login button
-  Then A Customer should be on the Customer Home Page
-  
-Examples:
- 
-	| username        | pass        |
-  | tylerusername   | tylerpass   |
-  | andyusername    | andypass    |
-  | khelilusername  | khelilpass  |
+	| airline | arrival  | departure |
+	| United  | 01:30:00 | 11:00:00  |
+	| Spirit  | 02:00:00 | 12:00:00  |
+	| Delta   | 03:00:00 | 13:00:00  |
+	| JetBlue | 04:00:00 | 14:00:00  |

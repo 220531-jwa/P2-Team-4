@@ -26,6 +26,7 @@ public class FlightController {
 			ctx.status(422);
 		}
 	}
+
 //	public void createFlight(Context ctx) {
 //		Flight f = ctx.bodyAsClass(Flight.class);
 //		String airline = f.getAirline();

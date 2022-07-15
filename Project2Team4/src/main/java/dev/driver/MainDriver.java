@@ -78,7 +78,7 @@ public class MainDriver {
 			// http://localhost:8030/flight
 			path("/flight", () -> {
 				// CREATE FLIGHT
-				post(fc::createFlight);
+				// post(fc::createFlight);
 				// GET ALL FLIGHTS
 				get(fc::getAllFlights);
 				// http://localhost:8030/flight/3

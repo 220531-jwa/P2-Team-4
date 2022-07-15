@@ -15,10 +15,10 @@ public class UserService {
 	}
 
 	// LOGIN
-	public User login(String userUserName, String userPassword) {
-		User u = ud.getUserUserName(userUserName);
-		if (u.getUserUserName().equals(userUserName)) {
-			if (u.getUserPassword().equals(userPassword)) {
+	public User login(String username, String pass) {
+		User u = ud.getUsername(username);
+		if (u.getUsername().equals(username)) {
+			if (u.getPass().equals(pass)) {
 				return u;
 			} else {
 				// WRONG UESRNAME OR PASSWORD
@@ -33,8 +33,8 @@ public class UserService {
 	}
 
 	// CREATE USER
-	public User createUser(String userUserName, String userPassword, Boolean isAdmin) {
-		return ud.createUser(userUserName, userPassword, isAdmin);
+	public User createUser(String username, String pass, Boolean isAdmin) {
+		return ud.createUser(username, pass, isAdmin);
 	}
 
 	// GET ALL USERS
@@ -53,8 +53,8 @@ public class UserService {
 	}
 
 	// UPDATE PASSWORD
-	public User updatePassword(int id, String userPassword) {
-		return ud.updatePassword(id, userPassword);
+	public User updatePassword(int id, String pass) {
+		return ud.updatePassword(id, pass);
 	}
 
 	// DELETE USER

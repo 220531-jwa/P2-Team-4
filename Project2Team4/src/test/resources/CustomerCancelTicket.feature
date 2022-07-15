@@ -19,22 +19,19 @@
 
 Feature:
 
-	Customer Login
+	Customer Cancel Ticket
 
 Background:
 
-	Given A Customer is on the Customer Login Page
- 
- Scenario Outline:
- 
- 	A Customer can login using their credentials
- 	
- 	When A Customer types in their "<username>" and "<pass>" and clicks the Customer Login button
-  Then A Customer should be on the Customer Home Page
-  
+	Given A Customer is on the Cancel Ticket Page
+
+Scenario Outline: A Customer can cancel their ticket
+
+	When A Customer enters the "<ticketid>" and clicks the cancel button
+	ThenAa Customer can be redirected to the Customer Home Page
+
 Examples:
- 
-	| username        | pass        |
-  | tylerusername   | tylerpass   |
-  | andyusername    | andypass    |
-  | khelilusername  | khelilpass  |
+
+	| ticketid |
+  | 1	       |
+  | 2        |

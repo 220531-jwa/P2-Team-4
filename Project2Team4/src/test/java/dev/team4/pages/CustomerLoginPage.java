@@ -8,24 +8,23 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 // CLASS
-public class UserLoginPage {
+public class CustomerLoginPage {
 
 	// SELENIUM WEB DRIVER
 	private WebDriver driver;
 
-	// LOGIN PAGE
-	public UserLoginPage(WebDriver driver) {
+	// CUSTOMER LOGIN PAGE
+	public CustomerLoginPage(WebDriver driver) {
 		this.driver = driver;
-
 		PageFactory.initElements(driver, this);
 	}
 
 	// CUSTOMER USERNAME
-	@FindBy(id = "cUname")
+	@FindBy(id = "cu")
 	public WebElement usernameInput;
 
 	// CUSTOMER PASSWORD
-	@FindBy(id = "cPass")
+	@FindBy(id = "cp")
 	public WebElement passwordInput;
 
 	// LOGIN BUTTON

@@ -8,18 +8,18 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 //CLASS
-public class CustomerHomePage {
+public class AdminHomePage {
 
 	// SELENIUM WEB DRIVER
 	private WebDriver driver;
 
-	// CUSTOMER HOME PAGE
-	public CustomerHomePage(WebDriver driver) {
+	// ADMIN HOME PAGE
+	public AdminHomePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
-	// BUY BUTTON
+	// TICKETS BUTTON
 	@FindBy(xpath = "/html/body/button")
-	public WebElement buyButton;
+	public WebElement ticketButton;
 }

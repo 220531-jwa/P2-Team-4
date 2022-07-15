@@ -8,26 +8,26 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 //CLASS
-public class UpdateFlightLocationDescriptionPage {
+public class AdminUpdateDescriptionPage {
 
 	// SELENIUM WEB DRIVER
 	private WebDriver driver;
 
 	// UPDATE FLIGHT LOCATION DESCRIPTION PAGE
-	public UpdateFlightLocationDescriptionPage(WebDriver driver) {
+	public AdminUpdateDescriptionPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
 	// FLIGHT ID
-	@FindBy(id = "flightId")
-	public WebElement flightID;
+	@FindBy(id = "fid")
+	public WebElement fidInput;
 
 	// FLIGHT DESCRIPTION
-	@FindBy(id = "flightDescription")
-	public WebElement flightDescriptionInput;
+	@FindBy(id = "description")
+	public WebElement descriptionInput;
 
-	// EDIT FLIGHT DESCRIPTION
-	@FindBy(id = "editFlightDescription")
-	public WebElement submitButton;
+	// SUBMIT BUTTON
+	@FindBy(id = "updateDescription")
+	public WebElement updateButton;
 }

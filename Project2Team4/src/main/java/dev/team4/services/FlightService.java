@@ -16,7 +16,7 @@ public class FlightService {
 
 	// CREATE FLIGHT
 	public Flight createFlight(Flight flight) {
-		if (flight.getAirline().equals("") || flight.getArriving() == null || flight.getDeparting() == null) {
+		if (flight.getAirline().equals("") || flight.getArrival() == null || flight.getDeparture() == null) {
 			return null;
 		}
 		return fd.createFlight(flight);

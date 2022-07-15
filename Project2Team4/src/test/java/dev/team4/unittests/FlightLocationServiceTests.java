@@ -1,5 +1,7 @@
+// PACKAGE
 package dev.team4.unittests;
 
+// IMPORTS
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -14,14 +16,21 @@ import dev.team4.models.FlightLocation;
 import dev.team4.repo.FlightLocationDAO;
 import dev.team4.services.FlightLocationService;
 
+// MOCKITO EXTENSION
 @ExtendWith(MockitoExtension.class)
+
+// CLASS
 public class FlightLocationServiceTests {
+
+	// FlightLocationService MOCK
 	@InjectMocks
 	private static FlightLocationService mockFls;
 
+	// FlightLocationDAO MOCK
 	@Mock
 	private static FlightLocationDAO mockFld;
 
+	// BEFORE EACH MOCK
 	@BeforeEach
 	public void setupEach() {
 		mockFls = new FlightLocationService(mockFld);

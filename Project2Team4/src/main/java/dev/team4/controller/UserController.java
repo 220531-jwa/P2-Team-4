@@ -18,7 +18,7 @@ public class UserController {
 	// LOGIN
 	public void loginUser(Context ctx) {
 		User u = ctx.bodyAsClass(User.class);
-		User loggedInUser = us.login(u.getUserUserName(), u.getUserPassword());
+		User loggedInUser = us.login(u.getUsername(), u.getPass());
 		if (u != null && u.getAdmin() != true) {
 			ctx.sessionAttribute("logged in customer", loggedInUser);
 		} else if (u != null && u.getAdmin() == true) {
@@ -30,12 +30,12 @@ public class UserController {
 	// CREATE USER
 	public void createUser(Context ctx) {
 		User u = ctx.bodyAsClass(User.class);
-		String userUserName = u.getUserUserName();
-		String userPassword = u.getUserPassword();
+		String username = u.getUsername();
+		String pass = u.getPass();
 		Boolean isAdmin = u.getAdmin();
 		User check = null;
 		try {
-			check = us.createUser(userUserName, userPassword, isAdmin);
+			check = us.createUser(username, pass, isAdmin);
 			if (check != null) {
 				ctx.status(200);
 				ctx.json(check);
@@ -71,8 +71,8 @@ public class UserController {
 	public void updatePassword(Context ctx) {
 		int id = Integer.parseInt(ctx.pathParam("id"));
 		User u = ctx.bodyAsClass(User.class);
-		String userPassword = u.getUserPassword();
-		User updated = us.updatePassword(id, userPassword);
+		String pass = u.getPass();
+		User updated = us.updatePassword(id, pass);
 		if (updated != null) {
 			ctx.status(200);
 			ctx.json(updated);

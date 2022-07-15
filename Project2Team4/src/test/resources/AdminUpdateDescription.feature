@@ -17,18 +17,25 @@
 ## (Comments)
 #Sample Feature Definition Template
 
-Feature: Admin Creates a Flight
+Feature:
+	
+	Admin Update Description
 
-  Background:
-    Given a Admin is on the AdminHomePage
+Background: 
 
-  Scenario Outline: An Admin can create a Flight
-    When the Admin types in the "<airline>", "<arriving>", and "<departing>" and clicks the CreateFlightButton
-    Then the Flight should be created
+	Given The Admin is on the Admin Edit Description Page
+	
+Scenario Outline:
 
-    Examples:
-      | airline | arrival  | departure |
-      | United  | 01:30:00 | 11:00:00  |
-      | Spirit  | 02:00:00 | 12:00:00  |
-      | Delta   | 03:00:00 | 13:00:00  |
-      | JetBlue | 04:00:00 | 14:00:00  |
+	The Admin can update a flight location description
+
+	When The Admin types in the "<flightid>" and "<description>" and clicks the update button
+	Then The Admin should be able to see the description changed in the Admin Home Page
+
+Examples: 
+	
+	| id | description               |
+  | 1  | It used to have pharaohs. |
+  | 2  | There is a royal family.  |
+  | 3  | It has kangaroos.         |
+  | 4  | It used to have samurais. |

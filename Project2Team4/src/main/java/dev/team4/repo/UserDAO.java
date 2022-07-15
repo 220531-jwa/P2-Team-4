@@ -16,12 +16,12 @@ public class UserDAO {
 	private static ConnectionUtil cu = ConnectionUtil.getConnectionUtil();
 
 	// CREATE USER
-	public User createUser(String userUserName, String userPassword, Boolean isAdmin) {
+	public User createUser(String username, String pass, Boolean isAdmin) {
 		String sql = "insert into public.user values (default, ?, ?, ?) returning *;";
 		try (Connection connect = cu.getConnection()) {
 			PreparedStatement ps = connect.prepareStatement(sql);
-			ps.setString(1, userUserName);
-			ps.setString(2, userPassword);
+			ps.setString(1, username);
+			ps.setString(2, pass);
 			ps.setBoolean(3, isAdmin);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
@@ -43,10 +43,10 @@ public class UserDAO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				int id = rs.getInt("id");
-				String userUserName = rs.getString("username");
-				String userPassword = rs.getString("pass");
+				String username = rs.getString("username");
+				String pass = rs.getString("pass");
 				Boolean isAdmin = rs.getBoolean("isadmin");
-				User u = new User(id, userUserName, userPassword, isAdmin);
+				User u = new User(id, username, pass, isAdmin);
 				user.add(u);
 			}
 			return user;
@@ -74,11 +74,11 @@ public class UserDAO {
 	}
 
 	// UPDATE PASSWORD
-	public User updatePassword(int id, String userPassword) {
+	public User updatePassword(int id, String pass) {
 		String sql = "update public.user set pass = ? where id = ? returning *;";
 		try (Connection connect = cu.getConnection()) {
 			PreparedStatement ps = connect.prepareStatement(sql);
-			ps.setString(1, userPassword);
+			ps.setString(1, pass);
 			ps.setInt(2, id);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
@@ -103,7 +103,7 @@ public class UserDAO {
 		}
 	}
 
-	public User getUserUserName(String userUserName) {
+	public User getUsername(String username) {
 		// TODO Auto-generated method stub
 		return null;
 	}

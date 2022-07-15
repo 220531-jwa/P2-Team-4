@@ -57,17 +57,32 @@ public class FlightLocationController {
 
 	// UPDATE DESCRIPTION
 	public void updateDescription(Context ctx) {
-		int id = Integer.parseInt(ctx.pathParam("id"));
 		FlightLocation fl = ctx.bodyAsClass(FlightLocation.class);
-		String description = fl.getDescription();
-		FlightLocation updated = fls.updateDescription(id, description);
-		if (updated != null) {
-			ctx.status(200);
-			ctx.json(updated);
-		} else {
-			ctx.status(404);
+		boolean success = fls.updateDescription(fl);
+		try {
+			if (!success) {
+				ctx.status(404);
+			} else {
+				ctx.status(200);
+				ctx.json(fl);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
+
+//	public void updateDescription(Context ctx) {
+//		int id = Integer.parseInt(ctx.pathParam("id"));
+//		FlightLocation fl = ctx.bodyAsClass(FlightLocation.class);
+//		String description = fl.getDescription();
+//		FlightLocation updated = fls.updateDescription(id, description);
+//		if (updated != null) {
+//			ctx.status(200);
+//			ctx.json(updated);
+//		} else {
+//			ctx.status(404);
+//		}
+//	}
 
 	// DELETE FLIGHT LOCATION
 	public void deleteFlightLocation(Context ctx) {

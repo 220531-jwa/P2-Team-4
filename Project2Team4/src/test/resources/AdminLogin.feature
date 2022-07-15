@@ -16,15 +16,23 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-Feature: Admin Login
 
-	Background:
-				Given a Admin is on the Login Page
+Feature:
+
+	Admin Login
+
+Background:
+
+	Given The Admin is on the Admin Login Page
  
-  Scenario Outline: A Admin can login using their credentials
-    When the Admin types in their "<username>" and "<password>" and clicks the Login button
-    Then the Admin should be on the Admin Homepage
-
-    Examples: 
-      | username  | password  |
-      | tyleruser | tylerpass  |
+Scenario Outline:
+ 
+ 	The Admin can login using their credentials
+ 	
+ 	When The Admin types in their "<username>" and "<pass>" and clicks the Admin Login button
+  Then The Admin should be on the Admin Home Page
+  
+Examples:
+ 
+	| username        | pass        |
+  | stephenusername | stephenpass |

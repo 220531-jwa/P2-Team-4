@@ -22,18 +22,19 @@ public class FlightDAO {
 		try (Connection conn = cu.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, flight.getAirline());
-			ps.setTime(2, Time.valueOf(flight.getArriving()));
-			ps.setTime(3, Time.valueOf(flight.getDeparting()));
+			ps.setTime(2, flight.getArrival());
+			ps.setTime(3, flight.getDeparture());
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				return new Flight(rs.getInt("id"), rs.getString("airline"), rs.getTime("arriving"),
-						rs.getTime("departing"));
+				return new Flight(rs.getInt("id"), rs.getString("airline"), rs.getTime("arrival"),
+						rs.getTime("departure"));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 		return null;
 	}
+
 //	public Flight createFlight(String airline, String arriving, String departing) {
 //		String sql = "insert into public.flight values (default, ?, ?, ?) returning *;";
 //		try (Connection connect = cu.getConnection()) {
@@ -62,9 +63,9 @@ public class FlightDAO {
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				String airline = rs.getString("airline");
-				Time arriving = rs.getTime("arriving");
-				Time departing = rs.getTime("departing");
-				Flight f = new Flight(id, airline, arriving, departing);
+				Time arrival = rs.getTime("arrival");
+				Time departure = rs.getTime("departure");
+				Flight f = new Flight(id, airline, arrival, departure);
 				flight.add(f);
 			}
 			return flight;
@@ -82,8 +83,8 @@ public class FlightDAO {
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				return new Flight(rs.getInt("id"), rs.getString("airline"), rs.getTime("arriving"),
-						rs.getTime("departing"));
+				return new Flight(rs.getInt("id"), rs.getString("airline"), rs.getTime("arrival"),
+						rs.getTime("departure"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -100,8 +101,8 @@ public class FlightDAO {
 			ps.setString(2, airline);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				return new Flight(rs.getInt("id"), rs.getString("airline"), rs.getTime("arriving"),
-						rs.getTime("departing"));
+				return new Flight(rs.getInt("id"), rs.getString("airline"), rs.getTime("arrival"),
+						rs.getTime("departure"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

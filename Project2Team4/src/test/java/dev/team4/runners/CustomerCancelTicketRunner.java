@@ -1,26 +1,31 @@
 // PACKAGE
 package dev.team4.runners;
 
-//IMPORTS
+// IMPORTS
 import java.io.File;
 
-import org.junit.platform.suite.api.Suite;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import dev.team4.pages.CreateFlightPage;
+import dev.team4.pages.CustomerCancelTicketPage;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
 
-//CLASS
-@Suite
-public class CreateFlightRunner {
+// CONNECTION TO CUCUMBER
+@RunWith(Cucumber.class)
+@CucumberOptions(features = "src/test/resources", glue = "dev.team4.steps")
 
-	// SELENIUM WEB DRIVER
+// CLASS
+public class CustomerCancelTicketRunner {
+
+	// CONNECTION TO SELENIUM WEB DRIVER
 	public static WebDriver driver;
 
-	// CONNECTION TO CreateFlightPage.java
-	public static CreateFlightPage createFlightPage;
+	// CONNECTION TO CustomerCancelTicketPage
+	public static CustomerCancelTicketPage customerCancelTicketPage;
 
 	// START CHROME DRIVER CONNECTION
 	@BeforeAll
@@ -28,7 +33,7 @@ public class CreateFlightRunner {
 		File chrome = new File("src/test/resources/chromedriver.exe");
 		System.setProperty("webdriver.chrome.driver", chrome.getAbsolutePath());
 		driver = new ChromeDriver();
-		createFlightPage = new CreateFlightPage(driver);
+		customerCancelTicketPage = new CustomerCancelTicketPage(driver);
 	}
 
 	// END CHROME DRIVER CONNECTION

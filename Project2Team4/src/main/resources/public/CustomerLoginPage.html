@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--ROOT-->
+<html lang="en">
+
+<!--HEAD-->
+
+<head>
+    <!--TITLE-->
+    <title>Customer Login Page</title>
+    <!--STYLE-->
+    <style>
+        .CustomerLoginForm {
+            width: 200px;
+            height: 200px;
+            position: fixed;
+            top: 50%;
+            left: 48%;
+            margin-top: -100px;
+            margin-left: -100px;
+        }
+    </style>
+</head>
+
+<!--BODY-->
+
+<body>
+    <div class="CustomerLoginForm">
+        <!-- Title -->
+        <h1>WELCOME</h1>
+        <!--CUSTOMER USERNAME-->
+        <label>
+            <input class="form-control" id="cu" type="text" placeholder="Customer Username">
+        </label>
+        <br><br>
+        <!--CUSTOMER PASSWORD-->
+        <label>
+            <input class="form-control" id="cp" type="password" placeholder="Customer Password">
+        </label>
+        <br><br>
+        <!--CUSTOMER LOGIN-->
+        <button type="button" class="btn btn-primary" onclick="customerlogin()">Login</button>
+        <br><br>
+        <!-- Switch Accounts -->
+        <form method="POST" action="AdminLoginPage.html">
+            <button type="submit" id="switch" class="switch">Switch to Admin</button>
+        </form>
+    </div>
+    <!--JAVASCRIPT-->
+    <script src="./ATTS.js"></script>
+</body>
+
+</html>

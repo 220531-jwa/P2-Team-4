@@ -1,25 +1,29 @@
 // PACKAGE
 package dev.team4.pages;
 
-//IMPORTS
+// IMPORTS
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-//CLASS
-public class CustomerHomePage {
+// CLASS
+public class CustomerCancelTicketPage {
 
-	// SELENIUM WEB DRIVER
+	// CONNECTION TO SELENIUM WEB DRIVER
 	private WebDriver driver;
 
-	// CUSTOMER HOME PAGE
-	public CustomerHomePage(WebDriver driver) {
+	public CustomerCancelTicketPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
-	// BUY BUTTON
-	@FindBy(xpath = "/html/body/button")
-	public WebElement buyButton;
+	// TICKET ID
+	@FindBy(id = "tid")
+	public WebElement ticketIdInput;
+
+	// CANCEL
+	@FindBy(id = "cancelButton")
+	public WebElement cancelButton;
+
 }

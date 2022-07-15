@@ -16,19 +16,23 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-Feature: Update Flight Location Description
+
+Feature:
+
+	Customer Get All Tickets
 
 Background: 
 
-	Given the administrator is on the Admin Edit Description Page
-	
-Scenario Outline: A administrator can update a flight location description
+	Given A Customer is on the Customer Login Page to login so they can go to the Customer Home Page to see all their tickets
 
-	When the Admin types in the "<flightid>" and "<flightdescription>" and clicks the submit button
-	Then the Admin should be able to see the description changed in the Admin Home Page
+Scenario Outline: A Customer can see all their tickets 
 
-Examples: 
-	
-	| flightid |    description    |
-  | 1        |    Cairo          |
-  | 4        |    Kyoto          |
+	When A Customer types in their "<username>" and "<pass>" and clicks the Customer Login button
+	Then A Customer should be on the Customer Home Page with all their tickets
+ 
+Examples:
+
+	| username       | password   |
+	| tylerusername  | tylerpass  |
+	| andyusername   | andypass   |
+	| khelilusername | khelilpass |

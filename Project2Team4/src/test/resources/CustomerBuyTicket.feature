@@ -18,23 +18,16 @@
 #Sample Feature Definition Template
 
 Feature:
+	
+	Customer Buy Ticket
 
-	Customer Login
+Background: 
 
-Background:
+	Given A Customer is on the Customer Home Page
 
-	Given A Customer is on the Customer Login Page
- 
- Scenario Outline:
- 
- 	A Customer can login using their credentials
- 	
- 	When A Customer types in their "<username>" and "<pass>" and clicks the Customer Login button
-  Then A Customer should be on the Customer Home Page
-  
-Examples:
- 
-	| username        | pass        |
-  | tylerusername   | tylerpass   |
-  | andyusername    | andypass    |
-  | khelilusername  | khelilpass  |
+Scenario: 
+		
+	A Customer can buy a ticket
+	
+	When A Customer clicks on the buy button they should be able to buy a ticket
+	Then A Customer id is associated with the ticket

@@ -1,4 +1,4 @@
-// PACKAGE
+// PACKAGES
 package dev.team4.runners;
 
 // IMPORTS
@@ -14,17 +14,18 @@ import io.cucumber.java.BeforeAll;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
+// CUCUMBER CONNECITON
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources", glue = "dev.team4.steps")
 
 // CLASS
-public class CustomerBuyRunner {
+public class CustomerGetAllTicketsRunner {
 
-	// SELENIUM WEB DRIVER
+	// SELNIUM WEB DRIVER
 	public static WebDriver driver;
 
 	// CONNECTION TO CustomerHomePage.java
-	public static CustomerHomePage customerHomepage;
+	public static CustomerHomePage customerHomePage;
 
 	// START CHROME DRIVER CONNECTION
 	@BeforeAll
@@ -32,8 +33,7 @@ public class CustomerBuyRunner {
 		File chrome = new File("src/test/resources/chromedriver.exe");
 		System.setProperty("webdriver.chrome.driver", chrome.getAbsolutePath());
 		driver = new ChromeDriver();
-
-		customerHomepage = new CustomerHomePage(driver);
+		customerHomePage = new CustomerHomePage(driver);
 	}
 
 	// END CHROME DRIVER CONNECTION

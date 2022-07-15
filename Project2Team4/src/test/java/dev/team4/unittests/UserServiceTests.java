@@ -37,46 +37,46 @@ public class UserServiceTests {
 		mockUs = new UserService(mockUd);
 	}
 
-	// LOGIN CUSTOMER
+	// VALID CUSTOMER LOGIN
 	@Test
-	public void loginCustomerUser() {
+	public void validCustomerlogin() {
 		// Given
 		User mock = new User(1, "demonLord", "pokemon", false);
 		// When
-		when(mockUd.getUserUserName("demonLord")).thenReturn(mock);
+		when(mockUd.getUsername("demonLord")).thenReturn(mock);
 		// Then
 		assertEquals(mock, mockUs.login("demonLord", "pokemon"));
 	}
 
-	// LOGIN ADMIN
+	// VALID ADMIN LOGIN
 	@Test
-	public void loginAdminUser() {
+	public void validAdminlogin() {
 		// Given
 		User mock = new User(1, "king", "felleman", true);
 		// When
-		when(mockUd.getUserUserName("king")).thenReturn(mock);
+		when(mockUd.getUsername("king")).thenReturn(mock);
 		// Then
 		assertEquals(mock, mockUs.login("king", "felleman"));
 	}
 
-	// WRONG CUSTOMER LOGIN CREDENTIALS
+	// INVALID CUSTOMER LOGIN
 	@Test
-	public void invalidCustomerLogin() {
+	public void invalidCustomerlogin() {
 		// Given
 		User mock = new User(3, "kanto", "services", false);
 		// When
-		when(mockUd.getUserUserName("micky")).thenReturn(mock);
+		when(mockUd.getUsername("micky")).thenReturn(mock);
 		// Then
 		assertNotEquals(mock, mockUs.login("micky", "mouse"));
 	}
 
-	// WRONG ADMIN LOGIN CREDENTIALS
+	// INVALID ADMIN LOGIN
 	@Test
-	public void invalidAdminLogin() {
+	public void invalidAdminlogin() {
 		// Given
 		User mock = new User(2, "calin", "fine", true);
 		// When
-		when(mockUd.getUserUserName("octus")).thenReturn(mock);
+		when(mockUd.getUsername("octus")).thenReturn(mock);
 		// Then
 		assertNotEquals(mock, mockUs.login("octus", "yes"));
 	}
