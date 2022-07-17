@@ -2,7 +2,7 @@
 
 ## Purpose
 
-An airport wishes to provide an improved system to encourage more people to fly with them. The current system only allows for travelers to buy a ticket and does not provide crucial information necessary for travel. To provide better services to their customers, the airport has developed ATTS. The Air Travel Ticketing/Tracking System provides better service to users, who can not only buy tickets, but also access information about their flight arrival and departure. Users logged in with their credentials will receive recommended flights based on their previous purchase history.
+An airport wishes to provide an improved system to encourage more people to fly with them. The current system only allows travelers to buy a ticket and does not provide crucial information necessary for travel. To provide better services to their customers, the airport has developed Air Travel Ticketing/Tracking System (ATTS). The ATTS provides better service to users by providing information about their airline, arrival and departure. The users who are logged in with their credentials will receive recommended flights based on their previous purchase history.
 
 # :computer: User Stories :computer:
 
