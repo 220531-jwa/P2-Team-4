@@ -1,5 +1,5 @@
 
-let baseUrl = "http://localhost:8040";
+let baseUrl = "http://localhost:8050";
 
 async function login() {
     console.log("login button pressed");
@@ -46,7 +46,7 @@ async function login() {
 }
 
 
-document.getElementById("createRequest").addEventListener("click", () => {}, false);
+//document.getElementById("createRequest").addEventListener("click", () => {}, false);
 
 const welcome = document.getElementById("welcome-message");
 const reimbursement = document.getElementById("reimbursement");
@@ -57,6 +57,7 @@ const typeOfEmployee = window.sessionStorage.getItem('type');
 async function getTickets(){
         
     let locations = ["Cairo","London","Sydney","Kyoto"];
+    let airlines = ["JetBlue","Spirit","Dalta","United","AirFrance","Jet Airways","Air Canada","Qatar Airways","Air China","Korean Air","British Airways","Swiss","AirAlgeria",];
 
     let searchId = JSON.stringify(window.sessionStorage.getItem('id'));
 
@@ -76,14 +77,16 @@ async function getTickets(){
             let col1 = document.createElement('td');
             col1.innerText = resp[i].id;
             newRow.appendChild(col1);
+        
 
             let col2 = document.createElement('td');
-            col2.innerText = resp[i].flight_id;
+            col2.innerText = resp[i].customer_id;
             newRow.appendChild(col2);
 
             let col3 = document.createElement('td');
-            col3.innerText = resp[i].customer_id;
-            newRow.appendChild(col3);
+            // col2.innerText = resp[i].flight_id;
+            col3.textContent = airlines[parseInt(resp[i].flight_id, 10) - 1]
+             newRow.appendChild(col3);
 
             let col4 = document.createElement('td');
 
@@ -226,4 +229,44 @@ async function cancelTicket()
         console.log(error);
     });
 
+}
+
+
+// ==================
+
+async function setDiscountAtFlight()
+{
+    console.log("Updated price");
+
+    let tId = document.getElementById('tId').value;
+    let flightDisc = document.getElementById('newprice').value;
+
+    let flightData = {
+        flight_id : tId,
+        price : flightDisc
+    }
+
+    console.log(flightData);
+
+    let flightJSON = JSON.stringify(flightData);
+
+    let res = await fetch (
+       // `${baseUrl}/userlogin/adminupdateprice`,
+         `${baseUrl}/userlogin/tickets`,
+        {
+            method : 'PUT',
+            header : {'Content-type' : 'application/json'},
+            body : flightJSON
+        }
+    );
+
+    let resJson = await res.json()
+    .then((resp) => {
+        console.log(resp);
+        window.location.assign("adminhomepage.html");
+    })
+    .catch((error) =>{
+        console.log(error);
+    });
+    
 }

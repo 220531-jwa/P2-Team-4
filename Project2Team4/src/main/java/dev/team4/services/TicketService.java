@@ -31,4 +31,8 @@ public class TicketService
 		
 	return td.selectAllTicket();
 	}
+
+	public boolean setDiscountAtFlight(Ticket t) {
+		return td.updatePriceTicket(t);
+	}
 }
