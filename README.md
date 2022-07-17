@@ -15,7 +15,7 @@ An airport wishes to provide an improved system to encourage more people to fly 
 ____________________________________________________________________
 * An administrator can login with their username and password.
 * An administrator can create new flights and their prices.
-* An administrator can view all the tickets (Ticket ID, Customer ID, Flight ID, Origin ID, Destination ID, Price)
+* An administrator can view all the tickets (Ticket ID, Customer ID, Flight ID, Origin ID, Destination ID, Price).
 * An administrator can update any location's description.
 * An administrator can cancel any flight.
 * An administrator can set a discount on a flight.
