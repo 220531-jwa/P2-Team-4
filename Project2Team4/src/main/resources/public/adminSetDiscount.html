@@ -6,18 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Edit price Page</title>
 </head>
+
+<style>
+    .glow{
+        font-size: 30px;
+        color: #fff;
+        animation: glow 1s ease-in-out infinite alternate;
+    }
+    
+    @-webkit-keyframes glow {
+      from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px blue, 0 0 40px darkblue, 0 0 50px lightblue, 0 0 60px darkblue, 0 0 70px blueviolet;
+      }
+      
+      to {
+        text-shadow: 0 0 20px #fff, 0 0 30px darkcyan, 0 0 40px white, 0 0 50px blue, 0 0 60px aqua, 0 0 70px blue, 0 0 80px darkblue;
+      }
+    }
+    
+    body 
+    {
+     background-color: royalblue;
+    }
+
+    #form-center
+    {
+        text-align: center;
+        margin-top: 20%; 
+    }
+
+
+</style>
 <body>
 
-    <h3>Enter the flight id</h3>
-    <form>
+    
+    <form id = "form-center">
+        <h3 class = "glow">Enter the flight id</h3>
         <input type = "number" id = "tId" title = "ticketID">
+        <h3 class = "glow">Enter new price</h3>
+        <input id = "newprice" placeholder="Write new price">
+        <br>
+        <br>
+        <button type = "button" style = "color:white; background-color: darkblue;" id="editFlightprice" class ="btn btn-primary" onclick="setDiscountAtFlight()">Submit</button>
     </form>
-    <h3>Enter new price</h3>
-    <form>
-        <input id = "newprice" placeholder="Write new price" >
-    </form>
-
-    <button type = "button" id="editFlightprice" class ="btn btn-primary" onclick="setDiscountAtFlight()">Submit</button>
+    
 
     
 </body>
