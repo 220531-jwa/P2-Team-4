@@ -1,5 +1,7 @@
 
-let baseUrl = "http://localhost:8050";
+
+//let baseUrl = "ec2-35-173-193-218.compute-1.amazonaws.com:8080";
+let baseUrl = "http://localhost:8040";
 
 async function login() {
     console.log("login button pressed");

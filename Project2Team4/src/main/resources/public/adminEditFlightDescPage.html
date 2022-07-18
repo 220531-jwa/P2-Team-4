@@ -5,21 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Edit Description Page</title>
+    <style>
+        body{
+            background-image: url("gxrP0f.webp");
+        }
+
+        #centered-form{
+            text-align: center;
+            margin-top: 20%; 
+        }
+
+        #lower-centered-form{
+            text-align: center;
+            margin-top: 1%; 
+            padding-left: 1%;
+        }
+        #body-form{
+            text-align: center;
+            padding-left: 0%;
+        }
+        #button-form{
+            text-align: center;
+        }
+        
+
+    </style>
 </head>
 <body>
-
-    <h3>Enter flight id</h3>
-    <form>
+    <form id = centered-form>
+        <h3 style = "color: white;">Enter flight id</h3>
         <input type = "number" id = "flightId" title = "FlightID">
     </form>
-    <h3>Enter flight description</h3>
-    <form>
+    <form id = lower-centered-form>
+        <h3 style = "color: white;">Enter flight description</h3>
+    </form>
+    <form id = body-form>
         <textarea id = "flightDescription" placeholder="Write description of flight" ></textarea>
     </form>
-
-    <button type = "button" id="editFlightDescription" class ="btn btn-primary" onclick="updateFlightDescription()">Submit</button>
-
-    
+    <form id = button-form>
+        <button type = "button" id="editFlightDescription" style = "color: white; background-color: darkblue;"btn btn-primary" onclick="updateFlightDescription()">Submit</button>
+    </form>
 </body>
 
     <script src = "./ATTS.js"></script>
