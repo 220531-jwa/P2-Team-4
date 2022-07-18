@@ -35,4 +35,28 @@ public class FlightDAO {
 
         return null;
     }
+
+    public Flight getFlightById(int id) {
+        String sql = "select * from flight where id = ?";
+
+        try (Connection conn = cu.getConnection()) {
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return new Flight(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        LocalTime.parse(rs.getTime(3).toString()),
+                        LocalTime.parse(rs.getTime(4).toString())
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
