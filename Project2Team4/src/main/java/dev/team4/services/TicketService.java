@@ -28,6 +28,10 @@ public class TicketService {
         return td.selectAllTicket();
     }
 
+    public boolean setDiscountAtFlight(Ticket t) {
+		return td.updatePriceTicket(t);
+	}
+
     public List<Ticket> getAllCustomersTickets(int id) {
         return td.getAllCustomersTickets(id);
     }

@@ -44,6 +44,7 @@ public class MainDriver {
                 path("/tickets", () ->
                 { // http://localhost:8080/users
                     get(tc::selectAllTicket);
+                    put(tc::setDiscountAtFlight);
                     path("/customer", () -> {
                         get(TicketController::getAllCustomersTickets);
                     });
@@ -58,22 +59,24 @@ public class MainDriver {
                 {
                     delete(tc::deleteTicket);
                 });
-            });
-
-            path("/flight", () -> {
-                post(FlightController::createFlight);
-                path("/{id}", () -> {
-                    get(FlightController::getFlightById);
                 });
-            });
 
-            path("/getSession", () -> {
+                path("/flight", () -> 
+                {
+                post(FlightController::createFlight);
+                    path("/{id}", () -> {
+                        get(FlightController::getFlightById);
+                    });
+                });
+
+                path("/getSession", () -> 
+                {
                 get(ctx -> {
                     User loggedInUser = ctx.sessionAttribute("loggedInUser");
 
                     System.out.println(loggedInUser);
                 });
-            });
+                });
 
         });
 

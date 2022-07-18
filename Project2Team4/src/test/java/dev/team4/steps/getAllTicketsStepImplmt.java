@@ -50,7 +50,7 @@ public class getAllTicketsStepImplmt {
 	@Given("a Customer is on the login page they can login go to customer landing page and see all ticket")
 	public void a_customer_is_on_the_login_page_they_can_login_go_to_customer_landing_page_and_see_all_ticket() {
 	    // Write code here that turns the phrase above into concrete actions
-		driver.get("http://localhost:8071/loginpage.html"); 
+		driver.get("http://localhost:8041/loginpage.html"); 
 	}
 
 	@When("the Customer types in their {string} and {string} and clicks the Login button")
@@ -65,7 +65,7 @@ public class getAllTicketsStepImplmt {
 	public void the_user_should_be_on_the_home_page_with_all_tickets_available() 
 	{
 	    // Write code here that turns the phrase above into concrete actions
-		new WebDriverWait(driver, Duration.ofSeconds(10))
+		new WebDriverWait(driver, Duration.ofSeconds(5))
 	     .until(ExpectedConditions.titleContains("Home Page"));
 
 		 assertEquals("Home Page", driver.getTitle());

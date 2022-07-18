@@ -92,6 +92,29 @@ public class TicketDAO {
         return false;
     }
 
+    public boolean updatePriceTicket(Ticket t) {
+
+        String sql = "update ticket" + " set price = ?" + " where id = ?";
+                
+                try(Connection conn = cu.getConnection())
+                {
+                    PreparedStatement ps = conn.prepareStatement(sql);
+                    
+                    ps.setInt(1, t.getPrice());
+                    ps.setInt(2, t.getFlight_id());
+                    
+                    ps.executeUpdate();
+                    
+                    if(ps.executeUpdate() != 0)
+                    {
+                        return true;
+                    }
+                } catch (SQLException e)
+                {
+                    e.printStackTrace();
+                }
+                r
+
 
     public List<Ticket> getAllCustomersTickets(int id) {
         String sql = "select * from ticket where customer_id = ?";
