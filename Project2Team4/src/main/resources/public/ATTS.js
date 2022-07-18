@@ -1,5 +1,15 @@
 
-let baseUrl = "http://localhost:8040";
+let baseUrl = "http://localhost:8080";
+
+buyButton.addEventListener('click', () => {
+
+    let buyButton = document.getElementById("buyButton");
+    buy();
+    buyButton.style.visibility = 'hidden';
+    let box = document.getElementById('box');
+    box.style.visibility = 'visible';
+    },false);
+
 
 async function login() {
     console.log("login button pressed");

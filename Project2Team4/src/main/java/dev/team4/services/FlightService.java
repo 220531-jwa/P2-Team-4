@@ -12,4 +12,8 @@ public class FlightService {
         }
         return flightDAO.createFlight(flight);
     }
+
+    public Flight getFlightById(int id) {
+        return flightDAO.getFlightById(id);
+    }
 }

@@ -19,4 +19,13 @@ public class FlightController {
             ctx.status(422);
         }
     }
+
+    public static void getFlightById(Context ctx) {
+        Flight result = flightService.getFlightById(Integer.parseInt(ctx.pathParam("id")));
+
+        if (result != null) {
+            ctx.status(200);
+            ctx.json(result);
+        }
+    }
 }
