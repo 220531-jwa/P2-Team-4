@@ -1,48 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cancel Flight Page</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cancel Flight Page</title>
 </head>
 
 <style>
-.glow{
-    font-size: 30px;
-    color: #fff;
-    animation: glow 1s ease-in-out infinite alternate;
-}
-
-@-webkit-keyframes glow {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px blue, 0 0 40px darkblue, 0 0 50px lightblue, 0 0 60px darkblue, 0 0 70px blueviolet;
+  body {
+    background-color: royalblue;
+    align-items: center;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    height: 1000px;
   }
-  
-  to {
-    text-shadow: 0 0 20px #fff, 0 0 30px darkcyan, 0 0 40px white, 0 0 50px blue, 0 0 60px aqua, 0 0 70px blue, 0 0 80px darkblue;
-  }
-}
 
-body {
- background-color: royalblue;
-}
-
-#center-form
-{
+  .form {
     text-align: center;
-    margin-top: 20%; 
-}
+    background-color: white;
+    opacity: 0.8;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height: 300px;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 20%;
+  }
 
+  h1 {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .input {
+    background-color: black;
+    border-radius: 100px;
+    border: 0;
+    box-sizing: border-box;
+    color: white;
+    padding-left: 40%;
+    width: 100%;
+    height: 10%;
+  }
+
+  .button {
+    background-color: black;
+    border-radius: 100px;
+    border: 0;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 38px;
+    outline: 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  .button:hover {
+    background-color: green;
+  }
 </style>
+
 <body>
-    <form id = "center-form">
-        <h3 class ="glow">Enter ticket id</h3>
-        <input type = "number" style = "color:white; background-color: darkblue;" ticketId" title = "TicketID">
-        <button type = "button" style = "color:white; background-color: darkblue;" bid="cancelTicketButton" class ="btn btn-primary" onclick="cancelTicket()">Submit</button>
-    </form>
+  <div class="form">
+    <h3>Ticket ID</h3>
+    <input class="input" style="color:white; background-color: darkblue;" ticketId title="TicketID">
+    <br><br>
+    <button type="button" class="button" style="color:white; background-color: darkblue;" bid="cancelTicketButton"
+      class="btn btn-primary" onclick="cancelTicket()">Submit</button>
+  </div>
 </body>
-
-    <script src = "./ATTS.js"></script>
-
+<script src="./ATTS.js"></script>
 </html>

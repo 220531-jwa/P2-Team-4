@@ -1,31 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Landing Page</title>
+    <title>Admin Home Page</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="styles.css" rel="stylesheet">
     <style>
-    body {
+        body {
+            background-image: url("QLolf9.webp");
+        }
 
-        background-image: url("QLolf9.webp");
-    }
+        h1 {
+            text-align: center;
+        }
 
+        th {
+            background-color: aliceblue;
+        }
 
+        .row {
+            margin-right: 30px;
+            margin-left: 30px;
+        }
+
+        #button {
+            background-color: black;
+            border-radius: 100px;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        #button:hover {
+            background-color: green;
+        }
+
+        .buttons {
+            text-align: center;
+        }
     </style>
 </head>
+
 <body>
+    <br><br><br><br><br><br><br><br>
+    <h1 style="color: white;">Admin Home Page</h1>
+    <br><br>
 
-    <H1 style = "color: white;">Admin Landing Page</H1>
+    <!--  <body onload="getRequests()">-->
 
-    <div>
-        <a href = "./adminEditFlightDescPage.html"><button id = "editDesc" style = "color: white; background-color: darkblue;">Edit Flight Description</button></a>
-    </div>
-<br>
-<br>
-<br>
-    <div>
-        <a href = "./adminSetDiscount.html"><button id = "setDisc" style = "color: white; background-color: darkblue;">Set a Discount on a Flight</button></a>
-    </div>
-</body>
+    <body onload="getTickets()">
+        <div class="container-fluid">
+            <div class="row">
+                <h1 id="welcome-message"></h1>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h2 id="reimbursement"></h2>
+                </div>
+            </div>
+            <div class="row">
+                <table class="table table-dark" style="background-color: darkblue;" id="requests">
+                    <thead>
+                        <tr id="table-top-row">
+                            <th scope="col">Ticket ID</th>
+                            <th scope="col">Customer ID</th>
+                            <th scope="col">Flight ID</th>
+                            <th scope="col">Destination ID</th>
+                            <th scope="col">Origin ID</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="buttons">
+            <br><br>
+            <a href="./adminEditFlightDescPage.html"><button id="button"
+                    style="color: white; background-color: darkblue;">Edit Flight Description</button></a>
+            <br><br>
+            <!--<script src="getAllTickets.js"></script>-->
+            <script src="./ATTS.js"></script>
+            <br><br>
+            <<a href="./adminSetDiscount.html"><button id="button" style="color: white; background-color: darkblue;">Set
+                    a Discount on a Flight</button></a>
+            <br><br><br><br>
+            <a href="customercancelflight.html"><button id="button"
+                    style="color: white; background-color: darkblue;">Cancel
+                    Flight</button></a>
+        </div>
+    </body>
+
 </html>

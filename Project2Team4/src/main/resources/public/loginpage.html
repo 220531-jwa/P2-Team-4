@@ -4,111 +4,87 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Login Page</title>
+    <title>Login Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel ="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
     <style>
-        .Center {
-            width: 200px;
-            height: 200px;
-            position: fixed;
-            top:50%;
-            left: 48%;
-            margin-top: -100px;
-            margin-left:-100px;
-        }
-
-        body{
-            background-image: url("75886.jpg");
-        }
-
-        @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
-
-        * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-        }
-
         body {
-        display: flex;
-        background: #000;
-        min-height: 100vh;
-        align-items: center;
-        justify-content: center;
-        }
+			align-items: center;
+			background-image: url("loginpagebackground.webp");
+            background-position: center;
+			display: flex;
+			justify-content: center;
+			height: 1000px;
+		}
 
-        .content {
-        position: relative;
-        }
+		.form {
+			text-align: center;
+			background-color: white;
+			opacity: 0.8;
+			border-radius: 20px;
+			box-sizing: border-box;
+			height: 400px;
+			padding-top: 30px;
+			padding-left: 30px;
+			padding-right: 30px;
+			width: 20%;
+		}
 
-        .content h2 {
-        color: #fff;
-        font-size: 8em;
-        position: absolute;
-        transform: translate(-50%, -50%);
-        }
+		h1 {
+			color: black;
+			font-family: Arial, Helvetica, sans-serif;
+		}
 
-        .content h2:nth-child(1) {
-        color: transparent;
-        -webkit-text-stroke: 2px #03a9f4;
-        }
+		.input {
+			background-color: black;
+			border-radius: 100px;
+			border: 0;
+			box-sizing: border-box;
+			color: white;
+			padding-left: 40%;
+			width: 100%;
+			height: 10%;
+		}
 
-        .content h2:nth-child(2) {
-        color: #03a9f4;
-        animation: animate 4s ease-in-out infinite;
-        }
+		.placeholder {
+			color: white;
+			font-family: Arial, Helvetica, sans-serif;
+		}
 
-        @keyframes animate {
-        0%,
-        100% {
-            clip-path: polygon(
-            0% 45%,
-            16% 44%,
-            33% 50%,
-            54% 60%,
-            70% 61%,
-            84% 59%,
-            100% 52%,
-            100% 100%,
-            0% 100%
-            );
-        }
+		.login {
+			background-color: black;
+			border-radius: 100px;
+			border: 0;
+			box-sizing: border-box;
+			color: white;
+			cursor: pointer;
+			font-size: 18px;
+			height: 50px;
+			margin-top: 38px;
+			outline: 0;
+			text-align: center;
+			width: 100%;
+		}
 
-        50% {
-            clip-path: polygon(
-            0% 60%,
-            15% 65%,
-            34% 66%,
-            51% 62%,
-            67% 50%,
-            84% 45%,
-            100% 46%,
-            100% 100%,
-            0% 100%
-            );
-        }
-        }
-
+		.login:hover {
+			background-color: green;
+		}
     </style>
 
 </head>
 <body>
-    <div class = "Center">
-
-        <label style = "color: white;">
-            Customer Username:
-            <input class="form-control" id = "cUname" type = "text" placeholder="Customer Username" required>
-        </label>
-        <br/>
-        <label style = "color: white;">
-            Customer Password:
-            <input class = "form-control" id="cPass" type = "password" placeholder="Customer Password" required>
-        </label>
-        <br/>
-    
-        <button type="button" class="btn btn-primary" onclick="login()">Login</button>
+    <div class = "form">
+        <!-- Title -->
+		<h1>WELCOME</h1>
+        <br><br>
+        <!--Username-->
+        <input class="input" id = "cUname" type = "text" placeholder="Username" required>
+        <br><br>
+        <!--Password-->
+        <input class = "input" id="cPass" type = "password" placeholder="Password" required>
+        <br><br>
+        <!--Login-->
+        <button type="button"  id="login" class="login" onclick="login()">Login</button>
     </div>
 <script src ="./ATTS.js"></script>
 

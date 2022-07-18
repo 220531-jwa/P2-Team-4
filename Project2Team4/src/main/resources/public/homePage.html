@@ -1,67 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Customer Home Page</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="styles.css" rel="stylesheet">
 
     <style>
-        th
-        {
+        th {
             background-color: aliceblue;
         }
 
-        body
-        {
+        body {
             background-image: url("inma-santiago-OdQ06PzSWM8-unsplash-scaled.jpg");
         }
 
+        h1 {
+            text-align: center;
+        }
 
+        th {
+            background-color: aliceblue;
+        }
+
+        .row {
+            margin-right: 30px;
+            margin-left: 30px;
+        }
+
+        #button {
+            background-color: black;
+            border-radius: 100px;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        #button:hover {
+            background-color: green;
+        }
+
+        .buttons {
+            text-align: center;
+        }
     </style>
 
 </head>
+<br><br><br><br><br><br><br><br>
+<h1 style="color: white;">Customer Home Page</h1>
+<br><br>
 <!--  <body onload="getRequests()">-->
-    <body onload="getTickets()">   
-<div class="container-fluid">
-    <div class="row">
-        <h1 id="welcome-message"></h1>
-    </div>
-    <div class="row">
-        <div class="col">
-            <h2 id="reimbursement"></h2>
+
+<body onload="getTickets()">
+    <div class="container-fluid">
+        <div class="row">
+            <h1 id="welcome-message"></h1>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h2 id="reimbursement"></h2>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-dark" style="background-color: darkblue;" id="requests">
+                <thead>
+                    <tr id="table-top-row">
+                        <th scope="col">id</th>
+                        <th scope="col">customer_id</th>
+                        <th scope="col">flight_id</th>
+                        <th scope="col">destination_id</th>
+                        <th scope="col">origin_id</th>
+                        <th scope="col">price</th>
+                        <th scope="col">buy</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
     </div>
-    <div class="row">
-        <table class="table table-dark" style="background-color: darkblue;" id="requests">
-            <thead>
-            <tr id="table-top-row">
-                <th scope="col">id</th>
-                <th scope="col">customer_id</th>
-                <th scope="col">flight_id</th>
-                <th scope="col">destination_id</th>
-                <th scope="col">origin_id</th>
-                <th scope="col">price</th>
-                <th scope ="col">buy</th>
-            </tr>
-            </thead>
-        </table>
+    <br><br>
+    <div class="buttons">
+        <a href="customercancelflight.html"><button id="button" style="color: white; background-color: darkblue;">Cancel
+                Flight</button></a>
+        <!--<script src="getAllTickets.js"></script>-->
+        <script src="./ATTS.js"></script>
+
+        <!-- Bootstrap JS and Popper -->
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
     </div>
-</div>
-
-<a href = "customercancelflight.html" ><button id = "cancelFlight" style = "color: white; background-color: darkblue;">Cancel Flight</button></a>
-<!--<script src="getAllTickets.js"></script>-->
-<script src="./ATTS.js"></script>   
-
-<!-- Bootstrap JS and Popper -->
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
-
 </body>
+
 </html>
