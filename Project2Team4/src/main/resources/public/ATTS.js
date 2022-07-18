@@ -11,6 +11,7 @@ buyButton.addEventListener('click', () => {
     },false);
 
 
+//let baseUrl = "ec2-35-173-193-218.compute-1.amazonaws.com:8080";
 async function login() {
     console.log("login button pressed");
 

@@ -6,14 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cancel Flight Page</title>
 </head>
+
+<style>
+.glow{
+    font-size: 30px;
+    color: #fff;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px blue, 0 0 40px darkblue, 0 0 50px lightblue, 0 0 60px darkblue, 0 0 70px blueviolet;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px darkcyan, 0 0 40px white, 0 0 50px blue, 0 0 60px aqua, 0 0 70px blue, 0 0 80px darkblue;
+  }
+}
+
+body {
+ background-color: royalblue;
+}
+
+#center-form
+{
+    text-align: center;
+    margin-top: 20%; 
+}
+
+</style>
 <body>
-
-    <h3>Enter ticket id</h3>
-    <form>
-        <input type = "number" id = "ticketId" title = "TicketID">
+    <form id = "center-form">
+        <h3 class ="glow">Enter ticket id</h3>
+        <input type = "number" style = "color:white; background-color: darkblue;" ticketId" title = "TicketID">
+        <button type = "button" style = "color:white; background-color: darkblue;" bid="cancelTicketButton" class ="btn btn-primary" onclick="cancelTicket()">Submit</button>
     </form>
-
-    <button type = "button" id="cancelTicketButton" class ="btn btn-primary" onclick="cancelTicket()">Submit</button>
 </body>
 
     <script src = "./ATTS.js"></script>
