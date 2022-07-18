@@ -83,4 +83,27 @@ public class TicketController
 		}
 		
 	}
+  
+  // set a discount at a flight
+  
+	public void setDiscountAtFlight(Context ctx)
+	{
+		//FlightLocation f = ctx.bodyAsClass(FlightLocation.class);
+		Ticket t = ctx.bodyAsClass(Ticket.class);
+		boolean success = ts.setDiscountAtFlight(t);
+		try {
+			
+			if(!success)
+			{
+				ctx.status(404);
+			} else {
+				ctx.status(200);
+				ctx.json(t);
+			}
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	
+}
 }

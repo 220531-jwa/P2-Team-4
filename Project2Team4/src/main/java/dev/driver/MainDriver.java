@@ -57,7 +57,7 @@ public class MainDriver {
 		});
 
 
-        app.start(8040);
+        app.start(8050);
 
         app.routes(() ->
         {
@@ -66,32 +66,37 @@ public class MainDriver {
                  post(uc::loginUser);
                  put(tc::buyTicket);
               	 path("/tickets", () -> 
-                 { // http://localhost:8080/users
+                 { 
 			            get(tc::selectAllTicket);
+	  	                put(tc::setDiscountAtFlight);
 				 });
                 
-                path("/adminupdatedescription", () -> 
-				{
+                 path("/adminupdatedescription", () -> 
+				 {
 					put(flc::updateFlightDescription);
-				});
+				 });
                 
-                path("/cancelticket", () -> 
+         //    path("/adminupdateprice", () -> {put(tc::setDiscountAtFlight);});
+                
+               path("/cancelticket", () -> 
                 {
                 	delete(tc::deleteTicket);
                 });
-            });
+                });
 
-            path("/flight", () -> {
+                path("/flight", () -> 
+                {
                 post(FlightController::createFlight);
-            });
+                });
 
-            path("/getSession", () -> {
+                path("/getSession", () -> 
+                {
                 get(ctx -> {
                     User loggedInUser = ctx.sessionAttribute("loggedInUser");
 
                     System.out.println(loggedInUser);
                 });
-            });
+                });
 
         });
         
