@@ -69,7 +69,7 @@ const typeOfEmployee = window.sessionStorage.getItem('type');
 async function getTickets(){
         
     let locations = ["Cairo","London","Sydney","Kyoto"];
-    let airlines = ["JetBlue","Spirit","Dalta","United","AirFrance","Jet Airways","Air Canada","Qatar Airways","Air China","Korean Air","British Airways","Swiss","AirAlgeria",];
+    let airlines = ["JetBlue","Spirit","Delta","United","Airfrance","Jet Airways","Air Canada","Qatar Airways","Air China","Korean Air","British Airways","SWISS","Air Algérie",];
 
     let searchId = JSON.stringify(window.sessionStorage.getItem('id'));
 
